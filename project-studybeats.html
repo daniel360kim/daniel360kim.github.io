@@ -81,7 +81,10 @@
         </section>
 
         <section style="margin-bottom: 4rem;">
-            <img src="assets/studybeats/dashboard.png" alt="StudyBeats Dashboard" style="width:100%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+            <video autoplay muted loop style="width:100%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+            <source src="assets/studybeats/Demo Final.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
         </section>
 
         <section style="margin-bottom:4rem;">
@@ -89,7 +92,7 @@
             <p style="color:var(--accent-color); margin-top:1rem;">
                 StudyBeats is a full-stack productivity application designed to help students and professionals focus. 
                 It combines a Lo-Fi music player, a Pomodoro timer, and task management into a single cohesive interface. 
-                Built with **Flutter**, the app runs seamlessly on the web, iOS, and Android, utilizing a serverless architecture to handle real-time synchronization across devices.
+                Built with Flutter, the app runs seamlessly on the web, iOS, and Android, utilizing a serverless architecture to handle real-time synchronization across devices.
             </p>
         </section>
 
@@ -121,23 +124,15 @@
 
         <section style="margin-bottom:4rem;">
             <h2>Key Features</h2>
-            <ul style="margin-top:1rem; color:var(--accent-color); padding-left:1.2rem; line-height: 1.6;">
-                <li><strong>Real-Time Sync:</strong> Todo lists and session data sync instantly across web and mobile clients using Cloud Firestore streams.</li>
-                <li><strong>AI Study Assistant:</strong> Integrated OpenAI GPT-4 API (via `openai_dart`) to provide instant homework help and study tips within the app.</li>
-                <li><strong>Dynamic Audio Engine:</strong> Features a custom audio player capable of streaming Lo-Fi beats or connecting directly to the user's Spotify Premium account via the Spotify SDK.</li>
-                <li><strong>Serverless PDF Generation:</strong> Uses Puppeteer running on Cloud Functions to generate downloadable PDF reports of study sessions.</li>
-                <li><strong>Secure Authentication:</strong> Implements OAuth providers (Google, Microsoft) alongside email authentication for secure user access.</li>
+            <ul style="margin-top:1rem; color:var(--accent-color); padding-left:1.2rem; line-height: 2;">
+            <li><strong>Real-Time Sync:</strong> Todo lists and session data sync instantly across web and mobile clients using Cloud Firestore streams.</li>
+            <li><strong>AI Study Assistant:</strong> Integrated OpenAI GPT-4 API to provide instant homework help and study tips within the app.</li>
+            <li><strong>Dynamic Audio Engine:</strong> Features a custom audio player capable of streaming Lo-Fi beats or connecting directly to the user's Spotify Premium account via the Spotify SDK.</li>
+            <li><strong>Serverless PDF Generation:</strong> Uses Puppeteer running on Cloud Functions to generate downloadable PDF reports of study sessions.</li>
+            <li><strong>Secure Authentication:</strong> Implements OAuth providers (Google, Microsoft) alongside email authentication for secure user access.</li>
             </ul>
         </section>
 
-        <section style="margin-bottom:4rem;">
-            <h2>Gallery</h2>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; margin-top:1.5rem;">
-                <img src="assets/studybeats/feature_ai.png" alt="AI Chat" style="width:100%; border-radius:12px; border:1px solid #eee;">
-                
-                <img src="assets/studybeats/feature_music.png" alt="Music Player" style="width:100%; border-radius:12px; border:1px solid #eee;">
-            </div>
-        </section>
 
     </main>
 
