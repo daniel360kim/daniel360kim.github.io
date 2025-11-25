@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OceanAI | Daniel Kim</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="site-title">Daniel Kim</a>
+                <div class="nav-links">
+                    <a href="index.html">About</a>
+                    <a href="projects.html" class="active">Projects</a>
+                    <a href="resume.html">Resume</a>
+                    <button id="theme-toggle">🌙 Dark Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+    <style>
+        main.container {
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        .reference-item {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            border-left: 2px solid #eee;
+        }
+        .bibtex-box {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin-top: 1rem;
+            border: 1px solid #ddd;
+        }
+    </style>
+        <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
+            <h1 style="font-size:3rem; color:black; line-height:1.2;"><span class="text-gradient">Engineered Underwater Vehicle for Ocean Litter Mapping</span></h1>
+            <p style="max-width:650px; margin:1rem auto; color:var(--accent-color); font-size:1.3rem; font-weight:600;">
+                Daniel Kim • Los Alamos High School
+            </p>
+            <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:0.5rem;">
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🥉 ISEF 3rd Place Finalist</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🥈 NM Supercomputing Challenge — 2nd Place</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🔬 Regeneron STS Semifinalist</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">📄 Best Paper — NM Academy of Science</span>
+            </div>
+        </section>
+
+        <section style="text-align:center; margin-bottom:4rem;">
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://www.nmas.org/wp-content/uploads/2024/03/01_Kim_NMJS2023.pdf" target="_blank">
+               📄 Paper (PDF)
+            </a>
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://github.com/daniel360kim/OceanAI" target="_blank">
+               💻 GitHub Code
+            </a>
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://www.youtube.com/watch?v=ad6DS7cMQtw&t=15s" target="_blank">
+               🎥 Video Demo
+            </a>
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="assets/poster.pdf" target="_blank">
+               📊 Poster (PDF)
+            </a>
+        </section>
+
+        <section style="text-align:center; margin-bottom:5rem;">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0p1DNmEGGuA?si=D-wstvSWvztVrxDx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Abstract</h2>
+            <p style="color:var(--accent-color); margin-top:1rem;">
+                This project explores the possibilities of pairing an autonomous underwater vehicle (AUV) 
+                with a deep-learning computer vision model for marine debris mapping. 
+                A cost-effective, 3D-printed AUV with a motorized ballast system was designed to collect 
+                underwater footage continuously at various depths. 
+                A trash detection machine learning model was developed to analyze the footage, yielding 
+                five areas of highly concentrated ocean debris at depths of 500-800 m below the surface.
+            </p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>System Overview</h2>
+            <img src="assets/oceanai/auv.png" alt="AUV System Overview" style="width:100%; border-radius:12px; margin-top:1.5rem; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+            <p style="color:var(--accent-color); margin-top:1rem;">
+                The AUV operates as an underwater glider, utilizing a motorized ballast tank to control buoyancy. 
+                By manipulating its weight, the vehicle sinks and floats, creating lift on its wings to propel forward without 
+                traditional propellers, allowing for long-duration independent operation.
+            </p>
+        </section>
+        
+        <section style="margin-bottom: 4rem; text-align: center;">
+            <img src="assets/oceanai/hardware.png" alt="Hardware Overview" style="width:60%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+        </section>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;">
+            <div>
+                <h2>Vision System</h2>
+                <p style="color:var(--accent-color);">
+                A YOLOv5l (Large) convolutional neural network was trained on the Trash ICRA-19 dataset containing 
+                5,700 annotated images. The model achieved the highest mean Average Precision (mAP) 
+                of 0.774 among tested architectures, allowing it to effectively identify marine debris in complex underwater environments.
+                </p>
+            </div>
+            <div>
+                 <h2>Hardware & Control</h2>
+                 <p style="color:var(--accent-color);">
+                 The vehicle is powered by a Teensy® 4.1 microcontroller (600 MHz) managing a custom PCB with sensors for pressure, temperature, and TDS. A stepper-motor driven syringe acts as the variable ballast system, offering precise buoyancy control.
+                 </p>
+            </div>
+        </div>
+     
+        
+        <section style="margin-bottom: 4rem;">
+            <img src="assets/oceanai/yolo.png" alt="YOLOv5 Model" style="width:100%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Results</h2>
+            <ul style="margin-top:1rem; color:var(--accent-color); padding-left:1.2rem;">
+            <li>Identified 174,734 litter objects at depths of 500–800m using open-source submersible footage.</li>
+            <li>Achieved 80% precision with the YOLOv5l model at a confidence threshold of 0.4.</li>
+            <li>Validated mechanical viability through Hardware-in-the-Loop (HIL) simulation.</li>
+            <li>Successfully demonstrated buoyancy control and high-frequency data logging (5400 Hz) in field tests.</li>
+            </ul>
+            <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+                <img src="assets/oceanai/results.png" alt="Results Graph" style="width:80%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.1rem; color: #333;">Cite this Project</h3>
+            <div class="bibtex-box">
+                @article{kim2023oceanai,<br>
+                &nbsp;&nbsp;title={Engineered Underwater Vehicle for Ocean Litter Mapping},<br>
+                &nbsp;&nbsp;author={Kim, Daniel},<br>
+                &nbsp;&nbsp;journal={New Mexico Journal of Science},<br>
+                &nbsp;&nbsp;volume={57},<br>
+                &nbsp;&nbsp;pages={1--17},<br>
+                &nbsp;&nbsp;year={2023}<br>
+                }
+            </div>
+            </div>
+        </section>
+
+    </main>
+    <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
+        <p>&copy; 2025 Daniel Kim. <a href="#">Back to Top</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrbitSim | Daniel Kim</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="site-title">Daniel Kim</a>
+                <div class="nav-links">
+                    <a href="index.html">About</a>
+                    <a href="projects.html" class="active">Projects</a>
+                    <a href="resume.html">Resume</a>
+                    <button id="theme-toggle">🌙 Dark Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-detail-header">
+            <h1><span class="text-gradient">OrbitSim</span></h1>
+            <div class="project-meta">
+                <span><strong>Role:</strong> Graphics Programmer</span>
+                <span><strong>Stack:</strong> C++, OpenGL, ImGUI</span>
+            </div>
+            <p>
+                A high-performance orbital mechanics simulator capable of visualizing 8,000+ active satellites in real-time.
+            </p>
+            <div class="tags" style="margin-top: 1rem;">
+                <span class="tag">Computer Graphics</span>
+                <span class="tag">Physics Engine</span>
+            </div>
+        </section>
+
+        <div class="project-image-banner">
+            [3D Earth Simulation Screenshot]
+        </div>
+
+        <section class="project-content">
+            <h2>Performance Optimization</h2>
+            <p>
+                Simulating thousands of bodies with gravitational interactions requires careful memory management. OrbitSim utilizes instanced rendering and spatial partitioning to maintain 60 FPS.
+            </p>
+
+            <h2>Features</h2>
+            <ul style="margin-bottom: 2rem; color: var(--accent-color); padding-left: 1.2rem;">
+                <li><strong>Modular Pipeline:</strong> Custom graphics engine written in C++.</li>
+                <li><strong>Physics Accuracy:</strong> Implements N-body gravitational simulations.</li>
+                <li><strong>Interactive UI:</strong> Real-time parameter tuning using ImGUI.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="container">
+        <p>&copy; 2025 Daniel Kim.</p>
+    </footer>
+</body>
+</html>

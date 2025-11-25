@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVC Rocketry | Daniel Kim</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="site-title">Daniel Kim</a>
+                <div class="nav-links">
+                    <a href="index.html">About</a>
+                    <a href="projects.html" class="active">Projects</a>
+                    <a href="resume.html">Resume</a>
+                    <button id="theme-toggle">🌙 Dark Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+    <style>
+        main.container {
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        .reference-item {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            border-left: 2px solid #eee;
+        }
+        .bibtex-box {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin-top: 1rem;
+            border: 1px solid #ddd;
+        }
+    </style>
+        <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
+            <h1 style="font-size:2.5rem; color:black; line-height:1.2;">
+                <span class="text-gradient">Developing a Control Algorithm and Simulation
+                    for Thrust Vector Controlled Rockets</span>
+            </h1>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 1rem auto; max-width: 650px; padding: 0.5rem 0;"></div>
+                <div style="text-align: center;">
+                    <p style="color: var(--accent-color); font-size: 1.3rem; font-weight: 600;">Daniel Kim</p>
+                    <p style="color: var(--accent-color); font-size: 1rem;">Los Alamos High School</p>
+                </div>
+                <div style="text-align: center;">
+                    <p style="color: var(--accent-color); font-size: 1.3rem; font-weight: 600;">Andres Iturregui</p>
+                    <p style="color: var(--accent-color); font-size: 1rem;">Los Alamos High School</p>
+                </div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:3rem;">
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🥇 NM Supercomputing Challenge Winner</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">📄 Best Paper — NM Academy of Science</span>
+            </div>
+        </section>
+
+        <section style="text-align:center; margin-bottom:4rem;">
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://www.nmas.org/wp-content/uploads/2023/03/2022_NMJS_Kim.pdf" target="_blank">
+               📄 Paper (PDF)
+            </a>
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+            href="https://youtu.be/0p1DNmEGGuA?si=hM-8bohFDugfgtVb" target="_blank">
+            🎥 Video Demo
+         </a>
+        </section>
+
+        <section style="text-align:center; margin-bottom:5rem;">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/ad6DS7cMQtw?si=OPXApCXW-DodgO1b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Abstract</h2>
+            <p style="color:var(--accent-color); margin-top:1rem;">
+                The purpose of this project was to develop a robust and versatile control algorithm for Thrust Vector Control (TVC) rockets and to validate this control system using a simulation and a real-life model. 
+                A simulation created in MATLAB Simulink recreated the rocket's flight based on physical aspects such as mass moment of inertia, thrust curves, and drag coefficients. 
+                A physical model utilizing a 2-axis gimbal and a custom flight computer was built to cross-reference simulation results with actual flight data.
+            </p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>System Overview</h2>
+            <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+            <img src="assets/rocketry/cad.png" alt="Rocket CAD Model" style="width:50%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+            </div>
+            <p style="color:var(--accent-color); margin-top:1rem;">
+            The vehicle is a custom-designed 3D-printed rocket featuring a 2-axis TVC gimbal. 
+            Powered by an Estes D12-0 motor, the gimbal actuates up to ±5 degrees to actively stabilize the rocket during ascent. 
+            The system was designed to validate control theory concepts in a real-world, high-dynamic environment.
+            </p>
+        </section>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 4rem;">
+            
+            <div>
+                <h2>Control Theory</h2>
+                <p style="color:var(--accent-color); margin-bottom:1rem;">
+                    The guidance system utilizes a <strong>PID controller</strong> to manage orientation error. 
+                    To avoid gimbal lock, the system uses <strong>Quaternions</strong> for 3D orientation tracking.
+                </p>
+                <p style="color:var(--accent-color);">
+                    Sensor noise is managed via a <strong>Linear Kalman Filter</strong>, which fuses gyroscope and accelerometer data to estimate the state of the vehicle with high precision.
+                </p>
+            </div>
+            
+            <div>
+                <h2>Avionics</h2>
+                <p style="color:var(--accent-color); margin-bottom:1rem;">
+                    A custom-fabricated PCB acts as the flight computer. It integrates a microcontroller, IMU (Inertial Measurement Unit), barometer, and servo drivers.
+                </p>
+                <p style="color:var(--accent-color);">
+                    The flight software, written in C++, handles high-speed data logging, state automation (launch detection, abort sequences), and real-time control loop execution.
+                </p>
+            </div>
+        </div>
+        <section style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center;">
+             <img src="assets/rocketry/pcb.png" alt="Flight Computer PCB" style="width:50%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+             <p style="font-size:0.9rem; text-align:center; color:var(--accent-color); margin-top:0.5rem;">Custom Flight Computer PCB Design </p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Simulation & Validation</h2>
+            <p style="color:var(--accent-color); margin-bottom:1.5rem;">
+                A Hardware-in-the-Loop (HIL) style simulation was built in MATLAB Simulink to tune the PID gains before flight. 
+                The simulation accounted for sensor noise, servo latency (50ms), and wind disturbances.
+            </p>
+            
+            <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
+                <img src="assets/rocketry/flight.png" alt="Flight vs Simulation Data" style="width:90%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+            </div>
+            
+            <ul style="margin-top:2rem; color:var(--accent-color); padding-left:1.2rem;">
+                <li><strong>Flight Data:</strong> The real-world flight experienced a pitch-over event due to mechanical misalignment, triggering the safety abort at 30 degrees tilt.</li>
+                <li><strong>Validation:</strong> Post-flight analysis showed the simulation accurately predicted the instability when real-world misalignment parameters were introduced, validating the model.</li>
+            </ul>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+<pre class="bibtex-box">
+@article{kim2022tvc,
+    title={Developing a Control Algorithm and Simulation for Thrust Vector Controlled Rockets},
+    author={Kim, Daniel and Iturregui, Andres},
+    journal={New Mexico Journal of Science},
+    volume={56},
+    pages={14--35},
+    year={2022}
+}
+</pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
+        <p>&copy; 2025 Daniel Kim. <a href="#">Back to Top</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Kim | ECE & Physics</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="site-title">Daniel Kim</a>
+                <div class="nav-links">
+                    <a href="index.html" class="active">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="resume.html">Resume</a>
+                    <button id="theme-toggle">☀️ Light Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="hero-wrapper">
+        <img src="assets/mountain.jpg" class="hero-banner" style="object-fit: cover; object-position: bottom; height: 250px;">
+        <span class="hero-credit">© Daniel Kim</span>
+    </div>
+    <main class="container">
+        <div class="profile-grid">
+            
+            <aside class="profile-sidebar">
+                <img src="assets/profile.JPG" alt="Daniel Kim" class="profile-img" width="500" height="500" style="object-fit: cover;">
+                
+                <div class="profile-text">
+                    <h1 class="profile-name">Daniel Kim</h1>
+                    <p class="profile-role">Engineer · Researcher · Physicist</p>
+                    <p class="profile-location">
+                        <i class="fas fa-map-marker-alt" style="color:#ea4335"></i> Houston, TX
+                    </p>
+                    
+                    <div class="social-row">
+                        <a href="mailto:daniel360kim@gmail.com" class="social-icon" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/daniel360kim" target="_blank" class="social-icon" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-icon" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="profile-content">
+                <canvas id="hero-canvas" style="position: absolute; top: 0; left: 0; z-index: 0; pointer-events: none;"></canvas> 
+                
+                <section class="bio-section" style="position: relative; z-index: 1;">
+                    <h2 class="section-title">About Me</h2>
+                    <p>
+                        I am an Electrical and Computer Engineering & Physics student at <strong>Rice University</strong> (Class of 2028).
+                    </p>
+                    <p>
+                        My work bridges the gap between hardware and intelligent software. From engineering <strong>GPU-accelerated machine learning algorithms</strong> to developing <strong>ROS-based robotics systems</strong> for NASA, I build efficient solutions for complex physical problems.
+                    </p>
+                    <p>
+                        Currently, I am working on autonomous drone navigation using computer vision. I am passionate about bridging the gap between hardware and software to create efficient, reliable systems.
+                    </p>
+                </section>
+
+                <section class="featured-section" style="position: relative; z-index: 1;">
+                    <h2 class="section-title">Selected Projects</h2>
+                    
+                    <div class="featured-item">
+                        <a href="project-oceanai.html" class="featured-link">
+                            <h3>OceanAI</h3>
+                            <span class="date">ISEF 3rd Place</span>
+                        </a>
+                        <p>Autonomous underwater vehicle for ocean litter mapping using YOLOv5 and SLAM. Identified 174,000+ pieces of debris.</p>
+                    </div>
+
+                    <div class="featured-item">
+                        <a href="project-orbitsim.html" class="featured-link">
+                            <h3>OrbitSim</h3>
+                            <span class="date">C++ / OpenGL</span>
+                        </a>
+                        <p>High-performance orbital simulator visualizing 8,000+ active satellites with N-body physics.</p>
+                    </div>
+
+                    <div class="featured-item">
+                        <a href="project-rocketry.html" class="featured-link">
+                            <h3>NM Rocketry TVC</h3>
+                            <span class="date">Embedded Systems</span>
+                        </a>
+                        <p>Real-time flight stabilization system for model rockets using custom PCB avionics and PID control.</p>
+                    </div>
+
+                    <a href="projects.html" class="btn-text" style="margin-top: 1rem; margin-bottom: 1.5rem; display: inline-block;">View All Projects →</a>
+
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer class="container" style="padding: 20px 0; text-align: center;">
+        <p>&copy; 2025 Daniel Kim.</p>
+    </footer>
+</body>
+</html>

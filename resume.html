@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume | Daniel Kim</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="site-title">Daniel Kim</a>
+                <div class="nav-links">
+                    <a href="index.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="resume.html" class="active">Resume</a>
+                    <button id="theme-toggle">🌙 Dark Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- No Banner Here -->
+
+    <main class="container">
+        <div class="full-width-content">
+            
+            <div class="resume-header" style="margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+                <div>
+                    <h1 class="text-gradient" style="margin: 0; font-size: 2.5rem;">Resume</h1>
+                    <p style="margin-top: 0.5rem; color: var(--accent-color);">Professional & Academic History</p>
+                </div>
+                <a href="assets/resume.pdf" download class="btn-primary btn-small">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+            </div>
+
+            <!-- Experience Timeline -->
+            <section style="margin-bottom: 4rem;">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <div class="timeline-role">Undergraduate Research Assistant</div>
+                                    <div class="timeline-org">Rice Computational Imaging Lab</div>
+                                </div>
+                                <div class="timeline-date">Aug 2025 – Present</div>
+                            </div>
+                            <ul class="timeline-desc">
+                                <li>Engineering GPU-accelerated machine learning algorithms (CUDA/C++) for large-scale implicit neural representations.</li>
+                                <li>Accelerating deep learning pipelines to reduce runtime and memory footprint on high-resolution datasets.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <div class="timeline-role">Robotics Software Engineering Intern</div>
+                                    <div class="timeline-org">NASA Kennedy Space Center</div>
+                                </div>
+                                <div class="timeline-date">May 2025 – Aug 2025</div>
+                            </div>
+                            <ul class="timeline-desc">
+                                <li>Developed a ROS-based tracking system using computer vision for real-time rocket motion tracking.</li>
+                                <li>Optimized control system performance by developing a neural-network-based PID controller, reducing tracking error by 94%.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <div class="timeline-role">Electrical Engineer R&D Intern</div>
+                                    <div class="timeline-org">Los Alamos National Laboratory</div>
+                                </div>
+                                <div class="timeline-date">Jun 2023 – Aug 2024</div>
+                            </div>
+                            <ul class="timeline-desc">
+                                <li>Streamlined RF field stabilization by developing an FPGA-based simulator, saving $350K in equipment costs.</li>
+                                <li>Replaced manual PID tuning with robust self-tuning control algorithms for particle accelerators.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            
+            <!-- Education Section -->
+            <section style="margin-bottom: 4rem;">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <div class="timeline-role">Rice University</div>
+                                    <div class="timeline-org">B.S. Electrical & Computer Engineering and Physics</div>
+                                </div>
+                                <div class="timeline-date">Aug 2024 – May 2028</div>
+                            </div>
+                            <ul class="timeline-desc">
+                                <li><strong>GPA:</strong> 4.0/4.0</li>
+                                <li><strong>Scholarships:</strong> Max Roy Scholarship (Full Tuition), Los Alamos Lab Gold Scholarship ($20k)</li>
+                                <li><strong>Coursework:</strong> Data Structures, Digital Logic, Signals & Systems, Analog Circuits</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Grid -->
+            <section>
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <p>C++ (CUDA, OpenGL), Python (PyTorch), Dart, TypeScript, MATLAB, Verilog</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Frameworks</h4>
+                        <p>ROS, Git, Linux, Docker, Quartus, Vivado, Google Cloud</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Hardware</h4>
+                        <p>RTL Design, PCB Design (Altium/KiCad), Arduino, Soldering, 3D Printing</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="container" style="padding: 20px 0; text-align: center;">
+        <p>&copy; 2025 Daniel Kim.</p>
+    </footer>
+
+</body>
+</html>
