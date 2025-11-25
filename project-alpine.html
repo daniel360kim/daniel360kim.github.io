@@ -24,54 +24,164 @@
     </header>
 
     <main class="container">
-        <!-- Project Header -->
-        <section class="project-detail-header">
-            <h1><span class="text-gradient">Alpine</span></h1>
-            <div class="project-meta">
-                <span><strong>Role:</strong> Lead Developer</span>
-                <span><strong>Stack:</strong> Python, Terminal UI</span>
-                <span><strong>Status:</strong> Active</span>
-            </div>
-            <p>
-                A privacy-focused, minimal, and keyboard-driven email client designed for efficiency and security. 
+    <style>
+        main.container {
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .tech-card {
+            background: rgba(0,0,0,0.03);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .tech-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .tech-card p {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin: 0;
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #007cf0, #00dfd8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: var(--text-color);
+        }
+        h1, h2, h3 {
+            color: var(--text-color);
+        }
+        p, ul, li, span {
+            color: var(--accent-color);
+        }
+        .bibtex-box {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+            color: var(--text-color);
+        }
+        [data-theme="dark"] .bibtex-box {
+            background: #333;
+            color: #f4f4f4;
+            border: 1px solid #555;
+        }
+        .bibtex-box pre {
+            background: none !important;
+            border: none !important;
+            color: inherit !important;
+        }
+    </style>
+
+        <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
+            <h1 class="text-gradient" style="font-size:3rem; line-height:1.2;">
+                Alpine
+            </h1>
+            <p style="max-width:650px; margin:1rem auto; font-size:1.3rem; font-weight:600;">
+                A PyTorch Library for Implicit Neural Representations.
             </p>
-            <div class="tags" style="margin-top: 1rem;">
-                <span class="tag">Python</span>
-                <span class="tag">Cryptography</span>
-                <span class="tag">CLI</span>
+            <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:0.5rem;">
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🤝 Open Source Contributor</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🔥 PyTorch & Lightning</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🧠 Deep Learning</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">📊 Scientific Computing</span>
             </div>
         </section>
 
-        <!-- Project Banner/Image -->
-        <div class="project-image-banner">
-            [Alpine Interface Screenshot]
-        </div>
+        <section style="text-align:center; margin-bottom:4rem;">
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://kushalvyas.github.io/alpine-docs" target="_blank">
+               📚 Documentation
+            </a>
+        
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://github.com/kushalvyas/alpine" target="_blank">
+               💻 GitHub Repo
+            </a>
+        </section>
+        <section style="margin-bottom: 4rem; display: flex; justify-content: center;">
+            <img src="assets/alpine/alpine_logo.png" alt="Alpine Library Banner" style="width:70%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1); display: block;">
+        </section>
 
-        <!-- Project Details -->
-        <section class="project-content">
+        <section style="margin-bottom:4rem;">
             <h2>Overview</h2>
-            <p>
-                Alpine is built for users who prefer the terminal over heavy GUI applications. It prioritizes privacy by ensuring end-to-end encryption handling and minimal metadata leakage. The interface is completely keyboard-driven, inspired by Vim keybindings.
+            <p style="margin-top:1rem;">
+                Alpine is an easy and extensible library designed to rapidly prototype Implicit Neural Representations (INRs) or Neural Fields in PyTorch. 
+                It offers modular, object-oriented interfaces that minimize boilerplate code, allowing researchers to focus on scientific discovery. 
+                The library includes powerful visualization tools to inspect learned features, gradients, and histograms.
             </p>
+        </section>
 
-            <h2>Key Features</h2>
-            <ul style="margin-bottom: 2rem; color: var(--accent-color); padding-left: 1.2rem;">
-                <li><strong>Keyboard Driven:</strong> Navigate through emails, compose, and organize without lifting your hands from the keyboard.</li>
-                <li><strong>Privacy First:</strong> Built-in GPG support and stripped headers to protect user anonymity.</li>
-                <li><strong>Minimalist UI:</strong> Distraction-free reading experience running directly in your terminal.</li>
+        <section style="margin-bottom:4rem;">
+            <h2>Technical Stack & Architecture</h2>
+            <div class="tech-grid" style="margin-top:1.5rem;">
+                <div class="tech-card">
+                    <h3>Core Framework</h3>
+                    <p>
+                        Built on <strong>PyTorch</strong> and <strong>Lightning</strong> for robust, scalable training loops. It leverages standard scientific computing libraries like <strong>NumPy</strong>, <strong>Scikit-learn</strong>, and <strong>Pandas</strong> for data manipulation.
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>Visualization & Analysis</h3>
+                    <p>
+                        Integrates <strong>Matplotlib</strong> and custom tools to provide interpretable visualizations such as PCA of learned features and real-time gradient monitoring.
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>Processing Pipelines</h3>
+                    <p>
+                        Utilizes <strong>OpenCV</strong>, <strong>Open3D</strong>, and <strong>Mcubes</strong> for handling complex 2D/3D data, including gigapixel images and protein structures.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Key Capabilities</h2>
+            <ul style="margin-top:1rem; padding-left:1.2rem; line-height: 2;">
+            <li><strong>Multi-Dimensional Fitting:</strong> Supports tasks ranging from 1D Audio signals to 2D Images and 3D Volumes.</li>
+            <li><strong>Scientific Applications:</strong> capable of Protein structure modelling (RCSB PDB), Hyperspectral volume representation, and fitting gigapixel signals via MINER.</li>
+            <li><strong>Inverse Problems:</strong> Includes solvers for complex tasks like Phase Recovery in optics and CT reconstruction from sparse measurements.</li>
+            <li><strong>Modular Design:</strong> Object-oriented architecture allows for easy extension and integration of new neural field architectures.</li>
             </ul>
+        </section>
 
-            <h2>Links</h2>
-            <p>
-                <a href="https://github.com/kushalvyas/alpine" target="_blank" class="view-link">View on GitHub →</a>
+
+
+        <section style="margin-bottom:4rem;">
+            <h2>Citation</h2>
+            <p style="font-size:0.9rem; margin-bottom:1rem;">
+            If you find Alpine useful in your research, please consider citing the project:
             </p>
+            <div class="bibtex-box">
+    <pre>
+    @software{vyas_alpine_2025,
+        author = {Vyas, Kushal and Saragadam, Vishwanath and Veeraraghavan, Ashok and Balakrishnan, Guha},
+        title = {Alpine - A PyTorch Library for Implicit Neural Representations},
+        year = {2025},
+        url = {https://github.com/kushalvyas/alpine}
+    }
+    </pre>
+            </div>
+        </section>
+            </div>
         </section>
 
     </main>
 
-    <footer class="container">
-        <p>&copy; 2025 Daniel Kim.</p>
+    <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
+        <p>&copy; 2025 Daniel Kim. <a href="#">Back to Top</a></p>
     </footer>
-
 </body>
 </html>

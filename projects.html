@@ -24,70 +24,102 @@
         </div>
     </header>
 
-    <!-- No Banner Here -->
-
     <main class="container">
         <div class="full-width-content">
             
             <div class="header-intro">
-                <h1><span class="text-gradient">Featured Work</span></h1>
-                <p>A curated selection of projects exploring robotics, embedded systems, and intelligent software.</p>
+                <h1><span class="text-gradient">Selected Work</span></h1>
+                <p>Engineering solutions across robotics, embedded systems, and intelligent software.</p>
             </div>
 
             <section class="project-showcase">
+                
                 <div class="project-row">
-                    <img src="assets/oceanai/hardware.png" class="showcase-img">
+                    <a href="project-oceanai.html" class="img-link">
+                        <img src="assets/oceanai/hardware.png" class="showcase-img" alt="OceanAI Hardware">
+                    </a>
                     <div class="showcase-text">
                         <h2>OceanAI</h2>
-                        <p>Autonomous underwater vehicle (AUV) combining deep learning (YOLOv5) and SLAM to map and identify over 174,000 pieces of ocean litter.</p>
+                        <div class="project-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <p>An autonomous underwater vehicle (AUV) engineered to map ocean litter. Features a custom YOLOv5 vision pipeline and SLAM navigation, successfully identifying over 174,000 debris objects in field tests.</p>
                         <a href="project-oceanai.html" class="showcase-link">View Project →</a>
                     </div>
                 </div>
                 
-                <div class="project-row">
-                    <img src="assets/img/alpine-thumb.jpg" class="showcase-img">
+                <div class="project-row reverse">
+                    <a href="project-alpine.html" class="img-link">
+                        <img src="assets/alpine/logo_only.png" class="showcase-img" alt="Alpine Library Visualization" style="height: 100%; background-color: white; object-fit: contain;">
+                    </a>
                     <div class="showcase-text">
                         <h2>Alpine</h2>
-                        <p>Minimalist, privacy-focused, keyboard-driven email client for the terminal.</p>
+                        <div class="project-tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Open Source</span>
+                        </div>
+                        <p>A modular library for rapidly prototyping Implicit Neural Representations (INRs). Provides researchers with object-oriented interfaces and visualization tools for scientific computing tasks.</p>
                         <a href="project-alpine.html" class="showcase-link">View Project →</a>
                     </div>
                 </div>
 
                 <div class="project-row">
-                    <img src="assets/studybeats/UI.jpg" class="showcase-img">
+                    <a href="project-studybeats.html" class="img-link">
+                        <img src="assets/studybeats/UI.jpg" class="showcase-img" alt="StudyBeats Interface">
+                    </a>
                     <div class="showcase-text">
                         <h2>StudyBeats</h2>
-                        <p>Scalable productivity suite for students with real-time sync and lo-fi music integration.</p>
+                        <div class="project-tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Full Stack</span>
+                        </div>
+                        <p>A scalable productivity suite serving 800+ concurrent users. Integrates real-time task synchronization, Lo-Fi music streaming, and collaborative study tools into a unified web platform.</p>
                         <a href="project-studybeats.html" class="showcase-link">View Project →</a>
                     </div>
                 </div>
 
-                <section class="parallax-section" style="background-image: url('assets/img/orbitsim-thumb.jpg');">
-                    <div class="parallax-overlay">
+                <div class="project-row reverse">
+                    <a href="project-orbitsim.html" class="img-link">
+                        <img src="assets/orbitsim/cover.png" class="showcase-img" alt="OrbitSim Visualization">
+                    </a>
+                    <div class="showcase-text">
                         <h2>OrbitSim</h2>
-                        <p>High-performance N-body gravity simulator visualizing 8,000+ active satellite trajectories in real-time.</p>
+                        <div class="project-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">Vulkan</span>
+                            <span class="tag">Physics Simulation</span>
+                        </div>
+                        <p>High-performance N-body gravity simulator visualizing 8,000+ active satellite trajectories in real-time. Built with a custom C++ engine using Vulkan for massive parallel rendering.</p>
                         <a href="project-orbitsim.html" class="showcase-link">View Project →</a>
                     </div>
-                </section>
+                </div>
 
                 <div class="project-row">
-                    <img src="assets/rocketry/cad.png" class="showcase-img">
+                    <a href="project-rocketry.html" class="img-link">
+                        <img src="assets/rocketry/cad.png" class="showcase-img" alt="Rocket CAD Model">
+                    </a>
                     <div class="showcase-text">
                         <h2>Rocket Active Control</h2>
-                        <p>Active flight stabilization computer for model rockets using PID control and Kalman filtering.</p>
+                        <div class="project-tags">
+                            <span class="tag">Embedded C++</span>
+                            <span class="tag">Control Theory</span>
+                            <span class="tag">PCB Design</span>
+                        </div>
+                        <p>A custom flight computer and thrust vector control (TVC) system. Implements PID control loops and Kalman filtering to actively stabilize model rockets during ascent.</p>
                         <a href="project-rocketry.html" class="showcase-link">View Project →</a>
                     </div>
                 </div>
 
-                
-
-            
             </section>
         </div>
     </main>
 
-    <footer class="container" style="padding: 20px 0; text-align: center;">
-        <p>&copy; 2025 Daniel Kim.</p>
+    <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
+        <p>&copy; 2025 Daniel Kim. <a href="#">Back to Top</a></p>
     </footer>
 
 </body>

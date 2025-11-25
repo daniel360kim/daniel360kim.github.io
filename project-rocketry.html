@@ -45,21 +45,39 @@
             overflow-x: auto;
             margin-top: 1rem;
             border: 1px solid #ddd;
+            color: var(--text-color);
+        }
+        /* Dark mode styles */
+        [data-theme="dark"] .bibtex-box {
+            background: #333;
+            color: #f4f4f4;
+            border: 1px solid #555;
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #007cf0, #00dfd8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: var(--text-color);
+        }
+        h1, h2, h3 {
+            color: var(--text-color);
+        }
+        p, ul, li, span, .reference-item {
+            color: var(--accent-color);
         }
     </style>
         <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
-            <h1 style="font-size:2.5rem; color:black; line-height:1.2;">
-                <span class="text-gradient">Developing a Control Algorithm and Simulation
-                    for Thrust Vector Controlled Rockets</span>
+            <h1 class="text-gradient" style="font-size:2.5rem; line-height:1.2;">
+                Developing a Control Algorithm and Simulation
+                for Thrust Vector Controlled Rockets
             </h1>
             <div style="display: flex; justify-content: center; gap: 2rem; margin: 1rem auto; max-width: 650px; padding: 0.5rem 0;"></div>
                 <div style="text-align: center;">
-                    <p style="color: var(--accent-color); font-size: 1.3rem; font-weight: 600;">Daniel Kim</p>
-                    <p style="color: var(--accent-color); font-size: 1rem;">Los Alamos High School</p>
+                    <p style="font-size: 1.3rem; font-weight: 600;">Daniel Kim</p>
+                    <p style="font-size: 1rem;">Los Alamos High School</p>
                 </div>
                 <div style="text-align: center;">
-                    <p style="color: var(--accent-color); font-size: 1.3rem; font-weight: 600;">Andres Iturregui</p>
-                    <p style="color: var(--accent-color); font-size: 1rem;">Los Alamos High School</p>
+                    <p style="font-size: 1.3rem; font-weight: 600;">Andres Iturregui</p>
+                    <p style="font-size: 1rem;">Los Alamos High School</p>
                 </div>
             </div>
             <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:3rem;">
@@ -85,7 +103,7 @@
 
         <section style="margin-bottom:4rem;">
             <h2>Abstract</h2>
-            <p style="color:var(--accent-color); margin-top:1rem;">
+            <p style="margin-top:1rem;">
                 The purpose of this project was to develop a robust and versatile control algorithm for Thrust Vector Control (TVC) rockets and to validate this control system using a simulation and a real-life model. 
                 A simulation created in MATLAB Simulink recreated the rocket's flight based on physical aspects such as mass moment of inertia, thrust curves, and drag coefficients. 
                 A physical model utilizing a 2-axis gimbal and a custom flight computer was built to cross-reference simulation results with actual flight data.
@@ -97,7 +115,7 @@
             <div style="display: flex; justify-content: center; margin-top: 1.5rem;">
             <img src="assets/rocketry/cad.png" alt="Rocket CAD Model" style="width:50%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
             </div>
-            <p style="color:var(--accent-color); margin-top:1rem;">
+            <p style="margin-top:1rem;">
             The vehicle is a custom-designed 3D-printed rocket featuring a 2-axis TVC gimbal. 
             Powered by an Estes D12-0 motor, the gimbal actuates up to ±5 degrees to actively stabilize the rocket during ascent. 
             The system was designed to validate control theory concepts in a real-world, high-dynamic environment.
@@ -108,33 +126,33 @@
             
             <div>
                 <h2>Control Theory</h2>
-                <p style="color:var(--accent-color); margin-bottom:1rem;">
+                <p style="margin-bottom:1rem;">
                     The guidance system utilizes a <strong>PID controller</strong> to manage orientation error. 
                     To avoid gimbal lock, the system uses <strong>Quaternions</strong> for 3D orientation tracking.
                 </p>
-                <p style="color:var(--accent-color);">
+                <p>
                     Sensor noise is managed via a <strong>Linear Kalman Filter</strong>, which fuses gyroscope and accelerometer data to estimate the state of the vehicle with high precision.
                 </p>
             </div>
             
             <div>
                 <h2>Avionics</h2>
-                <p style="color:var(--accent-color); margin-bottom:1rem;">
+                <p style="margin-bottom:1rem;">
                     A custom-fabricated PCB acts as the flight computer. It integrates a microcontroller, IMU (Inertial Measurement Unit), barometer, and servo drivers.
                 </p>
-                <p style="color:var(--accent-color);">
+                <p>
                     The flight software, written in C++, handles high-speed data logging, state automation (launch detection, abort sequences), and real-time control loop execution.
                 </p>
             </div>
         </div>
         <section style="margin-bottom: 4rem; display: flex; flex-direction: column; align-items: center;">
              <img src="assets/rocketry/pcb.png" alt="Flight Computer PCB" style="width:50%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
-             <p style="font-size:0.9rem; text-align:center; color:var(--accent-color); margin-top:0.5rem;">Custom Flight Computer PCB Design </p>
+             <p style="font-size:0.9rem; text-align:center; margin-top:0.5rem;">Custom Flight Computer PCB Design </p>
         </section>
 
         <section style="margin-bottom:4rem;">
             <h2>Simulation & Validation</h2>
-            <p style="color:var(--accent-color); margin-bottom:1.5rem;">
+            <p style="margin-bottom:1.5rem;">
                 A Hardware-in-the-Loop (HIL) style simulation was built in MATLAB Simulink to tune the PID gains before flight. 
                 The simulation accounted for sensor noise, servo latency (50ms), and wind disturbances.
             </p>
@@ -143,28 +161,27 @@
                 <img src="assets/rocketry/flight.png" alt="Flight vs Simulation Data" style="width:90%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
             </div>
             
-            <ul style="margin-top:2rem; color:var(--accent-color); padding-left:1.2rem;">
+            <ul style="margin-top:2rem; padding-left:1.2rem;">
                 <li><strong>Flight Data:</strong> The real-world flight experienced a pitch-over event due to mechanical misalignment, triggering the safety abort at 30 degrees tilt.</li>
                 <li><strong>Validation:</strong> Post-flight analysis showed the simulation accurately predicted the instability when real-world misalignment parameters were introduced, validating the model.</li>
             </ul>
         </section>
 
         <section style="margin-bottom:4rem;">
-<pre class="bibtex-box">
-@article{kim2022tvc,
-    title={Developing a Control Algorithm and Simulation for Thrust Vector Controlled Rockets},
-    author={Kim, Daniel and Iturregui, Andres},
-    journal={New Mexico Journal of Science},
-    volume={56},
-    pages={14--35},
-    year={2022}
-}
-</pre>
-                </div>
+            <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.1rem;">Cite this Project</h3>
+            <div class="bibtex-box">
+                @article{kim2022tvc,<br>
+                &nbsp;&nbsp;title={Developing a Control Algorithm and Simulation for Thrust Vector Controlled Rockets},<br>
+                &nbsp;&nbsp;author={Kim, Daniel and Iturregui, Andres},<br>
+                &nbsp;&nbsp;journal={New Mexico Journal of Science},<br>
+                &nbsp;&nbsp;volume={56},<br>
+                &nbsp;&nbsp;pages={14--35},<br>
+                &nbsp;&nbsp;year={2022}<br>
+                }
+            </div>
             </div>
         </section>
-
-    </main>
 
     <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
         <p>&copy; 2025 Daniel Kim. <a href="#">Back to Top</a></p>

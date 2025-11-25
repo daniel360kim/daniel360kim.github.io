@@ -494,3 +494,33 @@ footer {
     font-weight: 400;
     pointer-events: none;
 }
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Enforce consistent image size */
+.showcase-img {
+    width: 100%; /* Let container decide width */
+    aspect-ratio: 1 / 1; /* Forces standard video shape */
+    object-fit: cover; /* Crops image cleanly to fill shape */
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+}
+
+/* Ensure the link container takes up the 50% width */
+.img-link {
+    width: 50%;
+    display: block;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 850px) {
+    .img-link {
+        width: 100%;
+    }
+}

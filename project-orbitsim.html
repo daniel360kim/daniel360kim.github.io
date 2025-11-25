@@ -24,42 +24,114 @@
     </header>
 
     <main class="container">
-        <section class="project-detail-header">
-            <h1><span class="text-gradient">OrbitSim</span></h1>
-            <div class="project-meta">
-                <span><strong>Role:</strong> Graphics Programmer</span>
-                <span><strong>Stack:</strong> C++, OpenGL, ImGUI</span>
-            </div>
-            <p>
-                A high-performance orbital mechanics simulator capable of visualizing 8,000+ active satellites in real-time.
+    <style>
+        main.container {
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .tech-card {
+            background: rgba(0,0,0,0.03);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .tech-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        .tech-card p {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin: 0;
+        }
+    </style>
+
+        <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
+            <h1 style="font-size:3rem; color:black; line-height:1.2;">
+                <span class="text-gradient">OrbitSim</span>
+            </h1>
+            <p style="max-width:650px; margin:1rem auto; color:var(--accent-color); font-size:1.3rem; font-weight:600;">
+                High-performance real-time orbital mechanics simulator.
             </p>
-            <div class="tags" style="margin-top: 1rem;">
-                <span class="tag">Computer Graphics</span>
-                <span class="tag">Physics Engine</span>
+            <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:0.5rem;">
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">⚡ C++ 17</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🎮 Vulkan & ImGui</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🐍 Python ETL</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🌌 Physics Engine</span>
             </div>
         </section>
 
-        <div class="project-image-banner">
-            [3D Earth Simulation Screenshot]
-        </div>
+        <section style="text-align:center; margin-bottom:4rem;">
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://github.com/daniel360kim/OrbitSim/releases" target="_blank">
+               📦 Download Release
+            </a>
+        
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;" 
+               href="https://github.com/daniel360kim/OrbitSim" target="_blank">
+               💻 GitHub Repo
+            </a>
+        </section>
 
-        <section class="project-content">
-            <h2>Performance Optimization</h2>
-            <p>
-                Simulating thousands of bodies with gravitational interactions requires careful memory management. OrbitSim utilizes instanced rendering and spatial partitioning to maintain 60 FPS.
+        <section style="margin-bottom: 4rem;">
+            <img src="assets/orbitsim/demo.gif" alt="OrbitSim Main View" style="width:100%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.1);">
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Overview</h2>
+            <p style="color:var(--accent-color); margin-top:1rem;">
+                OrbitSim is a desktop application capable of simulating thousands of celestial objects in real-time. 
+                Built upon the **Walnut** application framework, it utilizes the raw performance of **C++** and **Vulkan** to render complex orbital paths without performance overhead. 
+                The system integrates with real-world data, allowing users to visualize active satellites directly from the Celestrak database.
             </p>
+        </section>
 
-            <h2>Features</h2>
-            <ul style="margin-bottom: 2rem; color: var(--accent-color); padding-left: 1.2rem;">
-                <li><strong>Modular Pipeline:</strong> Custom graphics engine written in C++.</li>
-                <li><strong>Physics Accuracy:</strong> Implements N-body gravitational simulations.</li>
-                <li><strong>Interactive UI:</strong> Real-time parameter tuning using ImGUI.</li>
+        <section style="margin-bottom:4rem;">
+            <h2>System Architecture</h2>
+            <div class="tech-grid" style="margin-top:1.5rem;">
+                <div class="tech-card">
+                    <h3>Core Engine (C++)</h3>
+                    <p>
+                        A custom simulation loop handles physics updates and orbital propagation. It utilizes smart pointers (`std::shared_ptr`) for memory management of scenes like `EarthOrbitViewer` and `SatelliteSearch`.
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>Graphics (Vulkan/ImGui)</h3>
+                    <p>
+                        Rendering is handled via the Vulkan API for low-overhead graphics. The user interface is built with **Dear ImGui**, allowing for immediate-mode GUI rendering for satellite searching and simulation controls.
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>Data Pipeline (Python)</h3>
+                    <p>
+                        An integrated **ETL (Extract, Transform, Load)** pipeline written in Python fetches Two-Line Element (TLE) sets from Celestrak and converts them into an optimized JSON format for the C++ engine.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Key Features</h2>
+            <ul style="margin-top:1rem; color:var(--accent-color); padding-left:1.2rem; line-height: 2;">
+            <li><strong>Real-Time Propagation:</strong> Simulates orbital mechanics for thousands of objects simultaneously using accurate physics models.</li>
+            <li><strong>Interactive Camera:</strong> Full control over the viewport with Pan, Rotate, and Zoom functionality to inspect specific orbits or get a wide view of the constellation.</li>
+            <li><strong>Satellite Search:</strong> A dedicated UI layer allows users to filter and locate specific satellites within the simulation scene.</li>
+            <li><strong>Data Integration:</strong> Seamlessly imports real-world satellite data (NORAD TLEs) processed via custom Python scripts.</li>
             </ul>
         </section>
+
+
     </main>
 
-    <footer class="container">
-        <p>&copy; 2025 Daniel Kim.</p>
+    <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
+        <p>&copy; 2025 Daniel Kim. <a href="#">Back to Top</a></p>
     </footer>
 </body>
 </html>
