@@ -27,126 +27,209 @@
     <!-- No Banner Here -->
 
     <main class="container">
-        <div class="full-width-content">
+       <div class="full-width-content">
+    
+    <div class="resume-header" style="margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
+        <div>
+            <h1 class="text-gradient" style="margin: 0; font-size: 2.5rem;">Resume</h1>
+            <p style="margin-top: 0.5rem; color: var(--accent-color);">Professional & Academic History</p>
+        </div>
+        <a href="assets/Resume 2026.pdf" download class="btn-primary btn-small">
+            <i class="fas fa-download"></i> Download PDF
+        </a>
+    </div>
+
+    <section style="margin-bottom: 4rem;">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
             
-            <div class="resume-header" style="margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 2rem;">
-                <div>
-                    <h1 class="text-gradient" style="margin: 0; font-size: 2.5rem;">Resume</h1>
-                    <p style="margin-top: 0.5rem; color: var(--accent-color);">Professional & Academic History</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Undergraduate Research Assistant</div>
+                            <div class="timeline-org">Rice Computational Imaging Lab</div>
+                        </div>
+                        <div class="timeline-date">Aug 2025 – Present</div>
+                    </div>
+                    <ul class="timeline-desc">
+                        <li>Architected <em>Alpine</em>, a modular PyTorch library to streamline the development of deep learning model development and training.</li>
+                        <li>Engineered a neural network pretraining method, boosting PSNR by 25-30 dB over meta-learned baselines, with 2x faster convergence.</li>
+                    </ul>
                 </div>
-                <a href="assets/KimDanielResume.pdf" download class="btn-primary btn-small">
-                    <i class="fas fa-download"></i> Download PDF
-                </a>
             </div>
 
-            <!-- Experience Timeline -->
-            <section style="margin-bottom: 4rem;">
-                <h2 class="section-title">Experience</h2>
-                <div class="timeline">
-                    
-                    <!-- Item 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-role">Undergraduate Research Assistant</div>
-                                    <div class="timeline-org">Rice Computational Imaging Lab</div>
-                                </div>
-                                <div class="timeline-date">Aug 2025 – Present</div>
-                            </div>
-                            <ul class="timeline-desc">
-                                <li>Engineering GPU-accelerated machine learning algorithms (CUDA/C++) for large-scale implicit neural representations.</li>
-                                <li>Accelerating deep learning pipelines to reduce runtime and memory footprint on high-resolution datasets.</li>
-                            </ul>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Robotics Software Engineering Intern</div>
+                            <div class="timeline-org">NASA Kennedy Space Center</div>
                         </div>
+                        <div class="timeline-date">May 2025 – Aug 2025</div>
                     </div>
-
-                    <!-- Item 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-role">Robotics Software Engineering Intern</div>
-                                    <div class="timeline-org">NASA Kennedy Space Center</div>
-                                </div>
-                                <div class="timeline-date">May 2025 – Aug 2025</div>
-                            </div>
-                            <ul class="timeline-desc">
-                                <li>Developed a ROS-based tracking system using computer vision for real-time rocket motion tracking.</li>
-                                <li>Optimized control system performance by developing a neural-network-based PID controller, reducing tracking error by 94%.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-role">Electrical Engineer R&D Intern</div>
-                                    <div class="timeline-org">Los Alamos National Laboratory</div>
-                                </div>
-                                <div class="timeline-date">Jun 2023 – Aug 2024</div>
-                            </div>
-                            <ul class="timeline-desc">
-                                <li>Streamlined RF field stabilization by developing an FPGA-based simulator, saving $350K in equipment costs.</li>
-                                <li>Replaced manual PID tuning with robust self-tuning control algorithms for particle accelerators.</li>
-                            </ul>
-                        </div>
-                    </div>
-
+                    <ul class="timeline-desc">
+                        <li>Developed a high-speed robotic vision system using ROS and OpenCV to track rocket trajectories in high-speed video.</li>
+                        <li>Pioneered a hybrid Neural-PID controller, decreasing tracking error by 94% and selected for deployment in Artemis moon missions.</li>
+                    </ul>
                 </div>
-            </section>
-            
-            <!-- Education Section -->
-            <section style="margin-bottom: 4rem;">
-                <h2 class="section-title">Education</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-role">Rice University</div>
-                                    <div class="timeline-org">B.S. Electrical & Computer Engineering and Physics</div>
-                                </div>
-                                <div class="timeline-date">Aug 2024 – May 2028</div>
-                            </div>
-                            <ul class="timeline-desc">
-                                <li><strong>GPA:</strong> 4.0/4.0</li>
-                                <li><strong>Scholarships:</strong> Max Roy Scholarship (Full Tuition), Los Alamos Lab Gold Scholarship ($20k)</li>
-                                <li><strong>Coursework:</strong> Data Structures, Digital Logic, Signals & Systems, Analog Circuits</li>
-                            </ul>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Electrical Engineer R&D Intern</div>
+                            <div class="timeline-org">Los Alamos National Laboratory</div>
                         </div>
+                        <div class="timeline-date">Jun 2023 – Aug 2024</div>
                     </div>
+                    <ul class="timeline-desc">
+                        <li>Automated the validation pipeline for RF field stabilization, eliminating the need for $350k in legacy hardware resources.</li>
+                        <li>Replaced manual PID tuning with robust self-tuning control algorithms for precise temperature control in particle accelerators.</li>
+                    </ul>
                 </div>
-            </section>
+            </div>
 
-            <!-- Skills Grid -->
-            <section>
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Languages</h4>
-                        <p>C++ (CUDA, OpenGL), Python (PyTorch), Dart, TypeScript, MATLAB, Verilog</p>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Computer Science Researcher</div>
+                            <div class="timeline-org">Joint Science and Technology Institute West</div>
+                        </div>
+                        <div class="timeline-date">Jun 2023</div>
                     </div>
-                    <div class="skill-category">
-                        <h4>Frameworks</h4>
-                        <p>ROS, Git, Linux, Docker, Quartus, Vivado, Google Cloud</p>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Hardware</h4>
-                        <p>RTL Design, PCB Design (Altium/KiCad), Arduino, Soldering, 3D Printing</p>
-                    </div>
+                    <ul class="timeline-desc">
+                        <li>Collaborated with DoE researchers to achieve a 92% runtime improvement in MPAS Ocean through tracer advection modeling.</li>
+                        <li>Engineered GPU/TPU-compatible heat transfer models by reformulating physics equations into efficient tensor algebra operations.</li>
+                    </ul>
                 </div>
-            </section>
-
-            <div style="margin-top: 4rem;"></div>
+            </div>
 
         </div>
+    </section>
+
+    <section style="margin-bottom: 4rem;">
+        <h2 class="section-title">Publications</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p style="margin-bottom: 0.5rem;">Vyas, K., Kayabasi, A., <strong>Kim, D.</strong>, et al. (2025).</p>
+                    <p><em>The Surprising Effectiveness of Noise Pretraining for Implicit Neural Representations.</em> Submitted to IEEE/CVF CVPR 2026.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p style="margin-bottom: 0.5rem;"><strong>Kim, D. (2024).</strong></p>
+                    <p><em>Engineered Underwater Vehicle for Ocean Litter Mapping.</em> New Mexico Journal of Science.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <p style="margin-bottom: 0.5rem;"><strong>Kim, D.</strong>, & Iturregui, A. (2022).</p>
+                    <p><em>Developing a Control Algorithm and Simulation for Thrust Vector Controlled Rockets.</em> New Mexico Journal of Science.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section style="margin-bottom: 4rem;">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="timeline-role">Rice University</div>
+                            <div class="timeline-org">B.S. Electrical & Computer Engineering</div>
+                        </div>
+                        <div class="timeline-date">Aug 2024 – May 2028</div>
+                    </div>
+                    <ul class="timeline-desc">
+                        <li><strong>GPA:</strong> 4.0/4.0</li>
+                        <li><strong>Scholarships:</strong> Max Roy Scholarship (Full Tuition), Los Alamos Lab Gold Scholarship ($20k)</li>
+                        <li><strong>Coursework:</strong> Data Structures & Algorithms, Computer Vision, Machine Learning, OOP, Signals & Systems, Linear Algebra</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-bottom: 4rem;">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div class="timeline-role">StudyBeats (app.studybeats.co)</div>
+                        <div class="timeline-date">Nov 2023 – Aug 2025</div>
+                    </div>
+                    <ul class="timeline-desc">
+                        <li>Founded a real-time productivity platform with AI-driven study assistance and focus environments (Dart, Google Cloud).</li>
+                        <li>Boosted system reliability for 1200+ users through optimized indexing, secure user authentication, and CI/CD.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div class="timeline-role">OceanAI</div>
+                        <div class="timeline-date">Jun 2022 – May 2023</div>
+                    </div>
+                    <ul class="timeline-desc">
+                        <li>Developed AUV to capture subsea footage and process it with YOLOv5-based object detection (C++, Python).</li>
+                        <li>Implemented deep learning and SLAM-based mapping to discover 174,000+ pieces of ocean trash (Regeneron ISEF 3rd Place).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-header">
+                        <div class="timeline-role">OrbitSim</div>
+                        <div class="timeline-date">Jul 2023 – Oct 2023</div>
+                    </div>
+                    <ul class="timeline-desc">
+                        <li>Simulated over 8000 active satellite trajectories using OpenGL, ImGui, and C++.</li>
+                        <li>Implemented a modular graphics pipeline with optimized memory usage for smooth 3D visualization.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <p>C++, Python, Verilog, Dart, TypeScript/JS, MATLAB/Simulink, Java, Swift, LaTeX</p>
+            </div>
+            <div class="skill-category">
+                <h4>Frameworks & Libraries</h4>
+                <p>PyTorch, NumPy, Scikit-learn, Lightning, CUDA, OpenCV, OpenGL, ImGui, ROS</p>
+            </div>
+            <div class="skill-category">
+                <h4>Hardware & Tools</h4>
+                <p>Linux, Git, Docker, GCP, FPGA (Quartus/Vivado), Altium, KiCad, Fusion360, I2C/SPI/UART, Keysight ADS</p>
+            </div>
+        </div>
+    </section>
+
+    <div style="margin-top: 4rem;"></div>
+
+</div>
     </main>
 
     <footer class="container" style="padding: 20px 0; text-align: center;">
