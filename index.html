@@ -1,8 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark"> <head>
+<html lang="en" data-theme="light">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Kim | ECE & Physics</title>
+    <meta name="description" content="Daniel Kim — Electrical & Computer Engineering student at Rice University working on machine learning, robotics, and hardware.">
+    <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta property="og:title" content="Daniel Kim">
+    <meta property="og:description" content="Electrical & Computer Engineering student at Rice University working on machine learning, robotics, and hardware.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://daniel360kim.github.io/">
+    <meta property="og:image" content="https://daniel360kim.github.io/assets/profile.JPG">
+    <meta name="twitter:card" content="summary">
+    <title>Daniel Kim</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="assets/script.js" defer></script>
@@ -16,14 +26,15 @@
                 <div class="nav-links">
                     <a href="index.html" class="active">About</a>
                     <a href="projects.html">Projects</a>
+                    <a href="publications.html">Publications</a>
                     <a href="resume.html">Resume</a>
-                    <button id="theme-toggle">☀️ Light Mode</button>
+                    <button id="theme-toggle">🌙 Dark Mode</button>
                 </div>
             </nav>
         </div>
     </header>
     <div class="hero-wrapper">
-        <img src="assets/mountain.jpg" class="hero-banner" style="object-fit: cover; object-position: bottom; height: 250px;">
+        <img src="assets/mountain.jpg" class="hero-banner" alt="Mountain landscape photographed by Daniel Kim" style="object-fit: cover; object-position: bottom; height: 250px;">
         <span class="hero-credit">© Daniel Kim</span>
     </div>
     <main class="container">
@@ -43,7 +54,7 @@
                         <a href="mailto:daniel360kim@gmail.com" class="social-icon" title="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="https://github.com/daniel360kim" target="_blank" class="social-icon" title="GitHub">
+                        <a href="https://github.com/daniel360kim" target="_blank" rel="noopener" class="social-icon" title="GitHub">
                             <i class="fab fa-github"></i>
                         </a>
                         <a href="https://www.linkedin.com/in/-daniel-kim-/" class="social-icon" title="LinkedIn">
@@ -64,44 +75,118 @@
                     <p>
                         My interests include hardware design, machine learning, and robotics. I have experience developing machine learning algorithms and robotics systems for research and engineering applications.
                     </p>
+                    <p>
+                        This summer, I am a <strong>Robotics Institute Summer Scholar (RISS)</strong> at <strong>Carnegie Mellon University</strong>, working in the AirLab on learned navigation for autonomous drones.
+                    </p>
 
                 </section>
 
+                <section class="news-section" style="position: relative; z-index: 1;">
+                    <h2 class="section-title">Latest News</h2>
+                    <ul class="news-list">
+                        <li class="news-item">
+                            <span class="news-date">Jun 2026</span>
+                            <p>Accepted as an <strong>ICCP Fellow</strong> for 2026.</p>
+                        </li>
+                        <li class="news-item">
+                            <span class="news-date">May 2026</span>
+                            <p>Accepted to <strong>Y Combinator Summer School</strong>.</p>
+                        </li>
+                        <li class="news-item">
+                            <span class="news-date">Feb 2026</span>
+                            <p>Our paper on <a href="publications.html#noise-inr">noise pretraining for implicit neural representations</a> was accepted to <strong>CVPR 2026</strong>!</p>
+                        </li>
+                    </ul>
+                </section>
+
                 <section class="featured-section" style="position: relative; z-index: 1;">
+                    <h2 class="section-title">Publications</h2>
+
+                    <div class="featured-item">
+                        <div class="featured-item-row">
+                            <div class="pub-thumb"><i class="fas fa-notes-medical"></i></div>
+                            <div>
+                                <a href="publications.html#fpgl" class="featured-link">
+                                    <h3>FPGL: Meta-Learned INRs for Medical Image Segmentation</h3>
+                                    <span class="date">Medical Image Analysis · In Submission</span>
+                                </a>
+                                <p>A meta-learned implicit neural representation framework for medical image segmentation, with Kushal Vyas, Ashok Veeraraghavan, and Guha Balakrishnan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item">
+                        <div class="featured-item-row">
+                            <img loading="lazy" src="assets/papers/snp.png" class="pub-thumb" alt="Noise Pretraining thumbnail">
+                            <div>
+                                <a href="publications.html#noise-inr" class="featured-link">
+                                    <h3>Noise Pretraining for Implicit Neural Representations</h3>
+                                    <span class="date">CVPR 2026 · Accepted</span>
+                                </a>
+                                <p>Pretraining INRs with structured noise yields dramatic signal-fitting improvements. Noise with 1/|f<sup>α</sup>| spectral structure matches the best data-driven initialization methods.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item">
+                        <div class="featured-item-row">
+                            <img loading="lazy" src="assets/papers/oceanai.png" class="pub-thumb" alt="Ocean Litter Mapping thumbnail">
+                            <div>
+                                <a href="publications.html#ocean-litter" class="featured-link">
+                                    <h3>Engineered Underwater Vehicle for Ocean Litter Mapping</h3>
+                                    <span class="date">NM J. Science 2024</span>
+                                </a>
+                                <p>Autonomous underwater vehicle using YOLOv5 and SLAM to map subsurface debris, identifying 174,000+ pieces across field deployments.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="featured-item">
+                        <div class="featured-item-row">
+                            <img loading="lazy" src="assets/papers/rocket.png" class="pub-thumb" alt="TVC Rockets thumbnail">
+                            <div>
+                                <a href="publications.html#tvc-rockets" class="featured-link">
+                                    <h3>Control Algorithm for Thrust Vector Controlled Rockets</h3>
+                                    <span class="date">NM J. Science 2022</span>
+                                </a>
+                                <p>PID-based control algorithm and 6-DOF flight simulation for model rockets with thrust vector control.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="publications.html" class="btn-text" style="margin-top: 1rem; margin-bottom: 1.5rem; display: inline-block;">View All Publications →</a>
+
+                </section>
+
+                <section class="featured-section" style="position: relative; z-index: 1; margin-top: 4rem;">
                     <h2 class="section-title">Selected Projects</h2>
-                    
-                    <div class="featured-item">
-                        <a href="project-oceanai.html" class="featured-link">
-                            <h3>OceanAI</h3>
-                            <span class="date">ISEF 3rd Place</span>
+
+                    <div class="mini-project-grid">
+                        <a class="mini-project-card" href="https://github.com/daniel360kim/ember" target="_blank" rel="noopener">
+                            <h3>Ember <i class="fab fa-github"></i></h3>
+                            <p>Differentiable 6-DOF rocket simulation that trains a neural TVC flight controller through the physics.</p>
                         </a>
-                        <p>Autonomous underwater vehicle for ocean litter mapping using YOLOv5 and SLAM. Identified 174,000+ pieces of debris.</p>
+                        <a class="mini-project-card" href="project-alpine.html">
+                            <h3>Alpine <i class="fas fa-arrow-right"></i></h3>
+                            <p>A PyTorch library for rapidly prototyping implicit neural representations.</p>
+                        </a>
+                        <a class="mini-project-card" href="project-studybeats.html">
+                            <h3>StudyBeats <i class="fas fa-arrow-right"></i></h3>
+                            <p>A real-time productivity platform with focus tools and Lo-Fi streaming, serving 1200+ users.</p>
+                        </a>
+                        <a class="mini-project-card" href="project-oceanai.html">
+                            <h3>OceanAI <i class="fas fa-arrow-right"></i></h3>
+                            <p>An autonomous underwater vehicle that mapped 174,000+ pieces of ocean litter with deep learning and SLAM.</p>
+                        </a>
                     </div>
 
-                    <div class="featured-item">
-                        <a href="project-orbitsim.html" class="featured-link">
-                            <h3>OrbitSim</h3>
-                            <span class="date">C++ / OpenGL</span>
-                        </a>
-                        <p>High-performance orbital simulator visualizing 8,000+ active satellites with N-body physics.</p>
-                    </div>
-
-                    <div class="featured-item">
-                        <a href="project-rocketry.html" class="featured-link">
-                            <h3>NM Rocketry TVC</h3>
-                            <span class="date">Embedded Systems</span>
-                        </a>
-                        <p>Real-time flight stabilization system for model rockets using custom PCB avionics and PID control.</p>
-                    </div>
-
-                    <a href="projects.html" class="btn-text" style="margin-top: 1rem; margin-bottom: 1.5rem; display: inline-block;">View All Projects →</a>
-
+                    <a href="projects.html" class="btn-text" style="margin-bottom: 1.5rem; display: inline-block;">View All Projects →</a>
                 </section>
             </div>
         </div>
     </main>
     <footer class="container" style="padding: 20px 0; text-align: center;">
-        <p>&copy; 2025 Daniel Kim.</p>
+        <p>&copy; 2026 Daniel Kim.</p>
     </footer>
 </body>
 </html>

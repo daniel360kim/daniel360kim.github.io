@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const resizeCanvas = () => {
             canvas.width = canvas.parentElement.offsetWidth;
-            canvas.height = canvas.parentElement.offsetHeight;
+            canvas.height = window.innerHeight;
         };
         resizeCanvas();
 
@@ -139,3 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
     }
 });
+
+function copyBibtex(btn) {
+    const box = btn.parentElement;
+    const text = box.innerText.replace(/^copy$/im, '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i>';
+        setTimeout(() => { btn.innerHTML = '<i class="fas fa-copy"></i>'; }, 1500);
+    });
+}

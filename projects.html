@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Daniel Kim</title>
+    <meta name="description" content="Daniel Kim's projects: differentiable rocket simulation, autonomous underwater vehicles, implicit neural representation tooling, and full-stack apps.">
+    <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <title>Projects · Daniel Kim</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="assets/script.js" defer></script>
@@ -17,6 +20,7 @@
                 <div class="nav-links">
                     <a href="index.html">About</a>
                     <a href="projects.html" class="active">Projects</a>
+                    <a href="publications.html">Publications</a>
                     <a href="resume.html">Resume</a>
                     <button id="theme-toggle">🌙 Dark Mode</button>
                 </div>
@@ -33,10 +37,27 @@
             </div>
 
             <section class="project-showcase">
-                
+
                 <div class="project-row">
+                    <a href="https://github.com/daniel360kim/ember" target="_blank" rel="noopener" class="img-link">
+                        <img loading="lazy" src="assets/rocketry/pcb.png" class="showcase-img" alt="Ember flight computer PCB">
+                    </a>
+                    <div class="showcase-text">
+                        <h2>Ember</h2>
+                        <div class="project-tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Differentiable Simulation</span>
+                            <span class="tag">Control Theory</span>
+                            <span class="tag">Embedded</span>
+                        </div>
+                        <p>A differentiable 6-DOF rocket simulator that trains a neural thrust-vector-control flight controller by backpropagating through the physics itself — paired with a custom Teensy-based flight computer to fly the learned policy on real hardware.</p>
+                        <a href="https://github.com/daniel360kim/ember" target="_blank" rel="noopener" class="showcase-link">View on GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-row reverse">
                     <a href="project-oceanai.html" class="img-link">
-                        <img src="assets/oceanai/hardware.png" class="showcase-img" alt="OceanAI Hardware">
+                        <img loading="lazy" src="assets/oceanai/hardware.png" class="showcase-img" alt="OceanAI Hardware">
                     </a>
                     <div class="showcase-text">
                         <h2>OceanAI</h2>
@@ -50,9 +71,9 @@
                     </div>
                 </div>
                 
-                <div class="project-row reverse">
+                <div class="project-row">
                     <a href="project-alpine.html" class="img-link">
-                        <img src="assets/alpine/logo_only.png" class="showcase-img" alt="Alpine Library Visualization" style="height: 100%; background-color: white; object-fit: contain;">
+                        <img loading="lazy" src="assets/alpine/logo_only.png" class="showcase-img" alt="Alpine Library Visualization" style="height: 100%; background-color: white; object-fit: contain;">
                     </a>
                     <div class="showcase-text">
                         <h2>Alpine</h2>
@@ -66,9 +87,9 @@
                     </div>
                 </div>
 
-                <div class="project-row">
+                <div class="project-row reverse">
                     <a href="project-studybeats.html" class="img-link">
-                        <img src="assets/studybeats/UI.jpg" class="showcase-img" alt="StudyBeats Interface">
+                        <img loading="lazy" src="assets/studybeats/UI.jpg" class="showcase-img" alt="StudyBeats Interface">
                     </a>
                     <div class="showcase-text">
                         <h2>StudyBeats</h2>
@@ -82,9 +103,9 @@
                     </div>
                 </div>
 
-                <div class="project-row reverse">
+                <div class="project-row">
                     <a href="project-orbitsim.html" class="img-link">
-                        <img src="assets/orbitsim/cover.png" class="showcase-img" alt="OrbitSim Visualization">
+                        <img loading="lazy" src="assets/orbitsim/cover.png" class="showcase-img" alt="OrbitSim Visualization">
                     </a>
                     <div class="showcase-text">
                         <h2>OrbitSim</h2>
@@ -98,9 +119,9 @@
                     </div>
                 </div>
 
-                <div class="project-row">
+                <div class="project-row reverse">
                     <a href="project-rocketry.html" class="img-link">
-                        <img src="assets/rocketry/cad.png" class="showcase-img" alt="Rocket CAD Model">
+                        <img loading="lazy" src="assets/rocketry/cad.png" class="showcase-img" alt="Rocket CAD Model">
                     </a>
                     <div class="showcase-text">
                         <h2>Rocket Active Control</h2>
@@ -119,7 +140,7 @@
     </main>
 
     <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
-        <p>&copy; 2025 Daniel Kim. <a href="#">Back to Top</a></p>
+        <p>&copy; 2026 Daniel Kim. <a href="#">Back to Top</a></p>
     </footer>
 
 </body>

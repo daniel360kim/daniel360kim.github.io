@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daniel Kim's publications in machine learning, computer vision, robotics, and embedded systems.">
+    <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <title>Publications · Daniel Kim</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="site-title">Daniel Kim</a>
+                <div class="nav-links">
+                    <a href="index.html">About</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="publications.html" class="active">Publications</a>
+                    <a href="resume.html">Resume</a>
+                    <button id="theme-toggle">🌙 Dark Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="full-width-content">
+
+            <div class="header-intro">
+                <h1><span class="text-gradient">Publications</span></h1>
+                <p>Peer-reviewed research in machine learning, robotics, and embedded systems.</p>
+                <p style="font-size: 0.85rem; color: var(--accent-color); font-family: monospace; margin-top: 0.5rem;">4 papers &nbsp;·&nbsp; 2022 – 2026</p>
+            </div>
+
+            <div class="pub-list">
+
+                <!-- Paper 1: FPGL -->
+                <div class="pub-card" id="fpgl">
+                    <div class="pub-card-placeholder"><i class="fas fa-notes-medical"></i></div>
+                    <div class="pub-card-body">
+                        <div class="pub-card-meta">
+                            <span class="pub-status review">In Submission · Medical Image Analysis</span>
+                            <span class="pub-year">2026</span>
+                        </div>
+                        <div class="pub-title">
+                            FPGL: A Meta-Learned Implicit Neural Representation Framework for Medical Image Segmentation
+                        </div>
+                        <div class="pub-authors" style="margin-top: 0.3rem;"><a href="https://kushalvyas.github.io/" target="_blank" rel="noopener">Vyas, K.</a>, <strong>Kim, D.</strong>, <a href="https://profiles.rice.edu/faculty/ashok-veeraraghavan" target="_blank" rel="noopener">Veeraraghavan, A.</a>, &amp; <a href="https://www.guhabalakrishnan.com/home" target="_blank" rel="noopener">Balakrishnan, G.</a></div>
+                        <div class="pub-venue">Medical Image Analysis (In submission)</div>
+                        <div class="project-tags" style="margin-top: 0.75rem;">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Implicit Neural Representations</span>
+                            <span class="tag">Medical Imaging</span>
+                            <span class="tag">Meta-Learning</span>
+                        </div>
+                        <details class="bibtex-toggle" style="margin-top: 0.9rem;">
+                            <summary><i class="fas fa-quote-right"></i> BibTeX</summary>
+                            <div class="bibtex-box"><button class="bibtex-copy" onclick="copyBibtex(this)" title="Copy to clipboard"><i class="fas fa-copy"></i></button>@article{vyas2026fpgl,
+  title   = {FPGL: A Meta-Learned Implicit Neural Representation Framework for Medical Image Segmentation},
+  author  = {Vyas, Kushal and Kim, Daniel and Veeraraghavan, Ashok and Balakrishnan, Guha},
+  journal = {Medical Image Analysis (in submission)},
+  year    = {2026}
+}</div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Paper 2: Noise Pretraining INR -->
+                <div class="pub-card" id="noise-inr">
+                    <img loading="lazy" src="assets/papers/snp.png" class="pub-card-img" alt="SNP paper thumbnail">
+                    <div class="pub-card-body">
+                        <div class="pub-card-meta">
+                            <span class="pub-status published">Accepted · CVPR 2026</span>
+                            <span class="pub-year">2026</span>
+                        </div>
+                        <div class="pub-title">
+                            <a href="https://arxiv.org/abs/2603.29034" target="_blank" rel="noopener">
+                                The Surprising Effectiveness of Noise Pretraining for Implicit Neural Representations
+                            </a>
+                        </div>
+                        <div class="pub-authors" style="margin-top: 0.3rem;"><a href="https://kushalvyas.github.io/" target="_blank" rel="noopener">Vyas, K.</a>, <a href="https://alpoler.github.io/" target="_blank" rel="noopener">Kayabasi, A.</a>, <strong>Kim, D.</strong>, <a href="https://vishwa91.github.io/" target="_blank" rel="noopener">Saragadam, V.</a>, <a href="https://profiles.rice.edu/faculty/ashok-veeraraghavan" target="_blank" rel="noopener">Veeraraghavan, A.</a>, &amp; <a href="https://www.guhabalakrishnan.com/home" target="_blank" rel="noopener">Balakrishnan, G.</a></div>
+                        <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</div>
+                        <div class="project-tags" style="margin-top: 0.75rem;">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Implicit Neural Representations</span>
+                            <span class="tag">Computer Vision</span>
+                        </div>
+                        <div class="pub-links" style="margin-top: 0.9rem;">
+                            <a href="assets/papers/snp.pdf" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>
+                            <a href="https://arxiv.org/abs/2603.29034" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> arXiv</a>
+                            <a href="https://kushalvyas.github.io/noisepretraining.html" class="pub-link" target="_blank" rel="noopener"><i class="fas fa-globe"></i> Project Page</a>
+                            <a href="project-alpine.html" class="pub-link"><i class="fas fa-flask"></i> Related Project</a>
+                        </div>
+                        <details class="bibtex-toggle">
+                            <summary><i class="fas fa-quote-right"></i> BibTeX</summary>
+                            <div class="bibtex-box"><button class="bibtex-copy" onclick="copyBibtex(this)" title="Copy to clipboard"><i class="fas fa-copy"></i></button>@inproceedings{vyas2026surprising,
+  title     = {The Surprising Effectiveness of Noise Pretraining for Implicit Neural Representations},
+  author    = {Vyas, Kushal and Kayabasi, Alper and Kim, Daniel and Saragadam, Vishwanath and Veeraraghavan, Ashok and Balakrishnan, Guha},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}</div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Paper 2: Ocean Litter Mapping -->
+                <div class="pub-card" id="ocean-litter">
+                    <img loading="lazy" src="assets/papers/oceanai.png" class="pub-card-img" alt="OceanAI paper thumbnail">
+                    <div class="pub-card-body">
+                        <div class="pub-card-meta">
+                            <span class="pub-status published">Published · NM J. Science</span>
+                            <span class="pub-year">2024</span>
+                        </div>
+                        <div class="pub-title">
+                                    <a href="project-oceanai.html">Engineered Underwater Vehicle for Ocean Litter Mapping</a>
+                                </div>
+                        <div class="pub-authors" style="margin-top: 0.3rem;"><strong>Kim, D.</strong></div>
+                        <div class="pub-venue">New Mexico Journal of Science</div>
+                        <div class="project-tags" style="margin-top: 0.75rem;">
+                            <span class="tag">Robotics</span>
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">SLAM</span>
+                        </div>
+                        <div class="pub-links" style="margin-top: 0.9rem;">
+                            <a href="https://www.youtube.com/watch?v=0p1DNmEGGuA" class="pub-link" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Video</a>
+                            <a href="https://github.com/daniel360kim/OceanAI" class="pub-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="project-oceanai.html" class="pub-link"><i class="fas fa-flask"></i> Related Project</a>
+                        </div>
+                        <details class="bibtex-toggle">
+                            <summary><i class="fas fa-quote-right"></i> BibTeX</summary>
+                            <div class="bibtex-box"><button class="bibtex-copy" onclick="copyBibtex(this)" title="Copy to clipboard"><i class="fas fa-copy"></i></button>@article{kim2024oceanai,
+  title   = {Engineered Underwater Vehicle for Ocean Litter Mapping},
+  author  = {Kim, D.},
+  journal = {New Mexico Journal of Science},
+  year    = {2024}
+}</div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Paper 3: TVC Rockets -->
+                <div class="pub-card" id="tvc-rockets">
+                    <img loading="lazy" src="assets/papers/rocket.png" class="pub-card-img" alt="Rocketry paper thumbnail">
+                    <div class="pub-card-body">
+                        <div class="pub-card-meta">
+                            <span class="pub-status published">Published · NM J. Science</span>
+                            <span class="pub-year">2022</span>
+                        </div>
+                        <div class="pub-title">
+                                    <a href="project-rocketry.html">Developing a Control Algorithm and Simulation for Thrust Vector Controlled Rockets</a>
+                                </div>
+                        <div class="pub-authors" style="margin-top: 0.3rem;"><strong>Kim, D.</strong>, &amp; Iturregui, A.</div>
+                        <div class="pub-venue">New Mexico Journal of Science</div>
+                        <div class="project-tags" style="margin-top: 0.75rem;">
+                            <span class="tag">Control Theory</span>
+                            <span class="tag">Embedded Systems</span>
+                            <span class="tag">Simulation</span>
+                        </div>
+                        <div class="pub-links" style="margin-top: 0.9rem;">
+                            <a href="https://www.youtube.com/watch?v=ad6DS7cMQtw&t=26s" class="pub-link" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> Video</a>
+                            <a href="project-rocketry.html" class="pub-link"><i class="fas fa-flask"></i> Related Project</a>
+                        </div>
+                        <details class="bibtex-toggle">
+                            <summary><i class="fas fa-quote-right"></i> BibTeX</summary>
+                            <div class="bibtex-box"><button class="bibtex-copy" onclick="copyBibtex(this)" title="Copy to clipboard"><i class="fas fa-copy"></i></button>@article{kim2022tvc,
+  title   = {Developing a Control Algorithm and Simulation for Thrust Vector Controlled Rockets},
+  author  = {Kim, D. and Iturregui, A.},
+  journal = {New Mexico Journal of Science},
+  year    = {2022}
+}</div>
+                        </details>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 4rem;"></div>
+
+        </div>
+    </main>
+
+    <footer class="container" style="padding: 20px 0; text-align: center;">
+        <p>&copy; 2026 Daniel Kim.</p>
+    </footer>
+
+</body>
+</html>
