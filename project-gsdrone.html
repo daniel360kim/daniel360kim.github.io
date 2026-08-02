@@ -197,7 +197,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 12px 32px rgba(0,0,0,0.18);
-            background: #0a0c10 url('assets/cmu/media/hero_city.jpg') center/cover no-repeat;
+            background: #0a0c10 url('assets/cmu/media/splat_preview.jpg') center/cover no-repeat;
             aspect-ratio: 16 / 9;
         }
         #splat-embed iframe {
@@ -296,17 +296,41 @@
         <section style="margin-bottom:4rem;">
             <h2>Fly through a reconstructed scene</h2>
             <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
-                This is a real scene from the simulator — 500,000 Gaussians rendered live in your browser.
+                This is a real scene from the simulator — over a million Gaussians rendered live in your browser.
                 Drag to look around, scroll to zoom, and use <strong>WASD + arrow keys</strong> to fly.
             </p>
             <div id="splat-embed">
                 <button id="splat-load" type="button" aria-label="Load interactive 3D scene">
                     <span class="play">▶</span>
                     <span style="font-weight:600;">Launch interactive flythrough</span>
-                    <small>loads ~16 MB · WebGL2</small>
+                    <small>loads ~34 MB · WebGL2</small>
                 </button>
             </div>
             <p class="caption">Urban scene reconstructed from the TartanAir dataset, viewed with a WebGL Gaussian-splat renderer.</p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Novel-view flythroughs</h2>
+            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
+                Smooth camera sweeps through reconstructed scenes, far from the original capture trajectory —
+                photorealistic RGB on the left, the simultaneously rendered depth map on the right.
+            </p>
+            <div class="vid-grid" style="grid-template-columns: 1fr;">
+                <figure class="vid-card">
+                    <video class="autoplay-inview" src="assets/cmu/media/flythrough_seasidetown.mp4" poster="assets/cmu/media/flythrough_seasidetown.jpg" muted loop playsinline preload="metadata"></video>
+                    <figcaption>Seaside Town — novel-view sweep, RGB | rendered depth</figcaption>
+                </figure>
+            </div>
+            <div class="vid-grid" style="margin-top:1.5rem;">
+                <figure class="vid-card">
+                    <video class="autoplay-inview" src="assets/cmu/media/flythrough_rome.mp4" poster="assets/cmu/media/flythrough_rome.jpg" muted loop playsinline preload="metadata"></video>
+                    <figcaption>Rome — novel-view sweep</figcaption>
+                </figure>
+                <figure class="vid-card">
+                    <video class="autoplay-inview" src="assets/cmu/media/flythrough_oldtownsummer.mp4" poster="assets/cmu/media/flythrough_oldtownsummer.jpg" muted loop playsinline preload="metadata"></video>
+                    <figcaption>Old Town (summer) — novel-view sweep</figcaption>
+                </figure>
+            </div>
         </section>
 
         <section style="margin-bottom:4rem;">
@@ -490,9 +514,17 @@
             update();
         });
 
+        // flythrough clips: play while visible
+        var inview = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (e.isIntersecting) { e.target.play(); } else { e.target.pause(); }
+            });
+        }, { threshold: 0.35 });
+        document.querySelectorAll('video.autoplay-inview').forEach(function (v) { inview.observe(v); });
+
         // hover-to-play videos (desktop); controls remain for tap on mobile
         if (window.matchMedia('(hover: hover)').matches) {
-            document.querySelectorAll('.vid-card video').forEach(function (v) {
+            document.querySelectorAll('.vid-card video:not(.autoplay-inview)').forEach(function (v) {
                 v.addEventListener('mouseenter', function () { v.play(); });
                 v.addEventListener('mouseleave', function () { v.pause(); });
             });
