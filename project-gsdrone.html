@@ -7,6 +7,11 @@
     <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <title>3DGS Drone Navigation · Daniel Kim</title>
+    <meta property="og:title" content="3D Gaussian Splatting for Learned Drone Navigation">
+    <meta property="og:description" content="A photorealistic, differentiable simulator for training drones to fly from a single RGB camera. CMU RISS research at AirLab.">
+    <meta property="og:image" content="https://daniel360kim.github.io/assets/cmu/media/cover_seasidetown.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js" defer></script>
 </head>
@@ -191,49 +196,20 @@
             padding: 0.9rem 0.5rem 0.25rem;
             text-align: center;
         }
-        /* --- splat viewer embed --- */
-        #splat-embed {
-            position: relative;
+        /* --- poster figures --- */
+        .fig-card {
+            background: #fff;
+            padding: 1rem;
             border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.18);
-            background: #0a0c10 url('assets/cmu/media/splat_preview.jpg') center/cover no-repeat;
-            aspect-ratio: 16 / 9;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
-        #splat-embed iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
+        [data-theme="dark"] .fig-card {
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
         }
-        #splat-load {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            background: rgba(10,12,16,0.45);
-            color: #fff;
-            border: 0;
-            cursor: pointer;
-            font: inherit;
-            width: 100%;
-        }
-        #splat-load .play {
-            width: 64px; height: 64px;
-            border-radius: 50%;
-            background: rgba(56,189,248,0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #08222e;
-        }
-        #splat-load span { color: #fff; }
-        #splat-load small { color: rgba(255,255,255,0.75); }
+        .fig-card img { display: block; width: 100%; }
+        .fig-narrow { max-width: 620px; margin: 0 auto; }
     </style>
 
         <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
@@ -294,22 +270,6 @@
         </section>
 
         <section style="margin-bottom:4rem;">
-            <h2>Fly through a reconstructed scene</h2>
-            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
-                This is a real scene from the simulator — over a million Gaussians rendered live in your browser.
-                Drag to look around, scroll to zoom, and use <strong>WASD + arrow keys</strong> to fly.
-            </p>
-            <div id="splat-embed">
-                <button id="splat-load" type="button" aria-label="Load interactive 3D scene">
-                    <span class="play">▶</span>
-                    <span style="font-weight:600;">Launch interactive flythrough</span>
-                    <small>loads ~48 MB · WebGL2</small>
-                </button>
-            </div>
-            <p class="caption">Urban scene reconstructed from the TartanAir dataset, viewed with a WebGL Gaussian-splat renderer.</p>
-        </section>
-
-        <section style="margin-bottom:4rem;">
             <h2>Novel-view flythroughs</h2>
             <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
                 Smooth camera sweeps through reconstructed scenes, far from the original capture trajectory —
@@ -363,6 +323,14 @@
                     <p class="caption">Ground-truth camera image ↔ our reconstruction.</p>
                 </div>
             </div>
+            <div class="fig-card fig-narrow" style="margin-top:2.5rem;">
+                <img loading="lazy" src="assets/cmu/media/fig_supervision.png" alt="Diagram: Gaussian splats rendered to RGB and depth in one differentiable pass, supervised against TartanAir ground-truth RGB and depth">
+            </div>
+            <p class="caption">
+                How a scene is trained: one differentiable render pass produces both images, so the reconstruction is
+                supervised with an RGB loss <em>and</em> an edge-weighted depth loss against the dataset's ground truth.
+                The depth term is what makes the geometry — and therefore collision checking — trustworthy.
+            </p>
         </section>
 
         <section style="margin-bottom:4rem;">
@@ -412,7 +380,16 @@
 
         <section style="margin-bottom:4rem;">
             <h2>How it works</h2>
-            <div class="tech-grid" style="margin-top:1.5rem;">
+            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
+                Every reconstructed scene ships as a complete flight environment: the photorealistic RGB the policy sees,
+                a point cloud and collision field for safety checking, metric depth, and a dense set of expert
+                trajectories to learn from.
+            </p>
+            <div class="fig-card">
+                <img loading="lazy" src="assets/cmu/media/fig_pipeline.png" alt="Grid of three scenes by five columns: RGB view, point cloud, ESDF collision geometry, metric depth, and expert trajectories">
+            </div>
+            <p class="caption">From reconstruction to flyable tasks — RGB, geometry, collision field, metric depth, and expert trajectory sampling for three scenes.</p>
+            <div class="tech-grid" style="margin-top:2.5rem;">
                 <div class="tech-card">
                     <h3>🏗️ Scene reconstruction</h3>
                     <p>
@@ -438,6 +415,13 @@
                     </p>
                 </div>
             </div>
+            <div class="fig-card fig-narrow" style="margin-top:2.5rem;">
+                <img loading="lazy" src="assets/cmu/media/fig_policy_method.png" alt="Three-step diagram: a privileged trajectory-optimization expert generates dodge labels, an RGB student is cloned from them, and the student deploys on RGB alone">
+            </div>
+            <p class="caption">
+                The imitation-learning recipe: a privileged expert with full scene geometry plans multi-hypothesis dodge
+                trajectories; a student network is cloned from those labels; at deployment the student flies from RGB alone.
+            </p>
         </section>
 
         <section style="margin-bottom:4rem;">
@@ -448,6 +432,20 @@
                 <li><strong>Depth policies transfer:</strong> depth-supervised students trained in the simulator fly competitively with established baselines on a held-out evaluation suite.</li>
                 <li><strong>RGB policies are the frontier:</strong> monocular RGB students already complete a meaningful share of evaluation scenarios, and closing the remaining gap to depth policies — via more scene diversity and better training regimes — is the active focus of this work.</li>
             </ul>
+            <div class="fig-card" style="margin-top:2rem;">
+                <img loading="lazy" src="assets/cmu/media/fig_policy_rollout.png" alt="Closed-loop RGB policy rollout in the Seaside Town scene: trajectory over the clearance field, clearance-vs-time plot, and onboard camera filmstrip">
+            </div>
+            <p class="caption">
+                A closed-loop monocular RGB student flying in the simulator: the flown path over the scene's clearance
+                field, clearance staying above the collision band while goal distance falls, and the onboard view.
+            </p>
+            <div class="fig-card" style="margin-top:2rem;">
+                <img loading="lazy" src="assets/cmu/media/fig_fidelity.png" alt="Per-scene dot plot comparing PSNR, LPIPS, and depth error between training views and held-out novel views">
+            </div>
+            <p class="caption">
+                Why training in the splat sim is trustworthy: rendering fidelity and depth accuracy barely degrade on
+                camera views the reconstruction never saw during training.
+            </p>
             <p style="margin-top:1rem; font-size:0.9rem;">
                 Quantitative benchmarks are still being finalized — full tables will appear with the paper. Next up:
                 deploying a trained RGB policy on a physical quadrotor, extending reconstruction beyond TartanAir to broader
@@ -463,8 +461,6 @@
                 <a href="https://riss.ri.cmu.edu" target="_blank" rel="noopener">Robotics Institute Summer Scholars (RISS)</a> program.
                 Special thanks to Rachel Burcin and Dr. John Dolan for organizing the program, and to Dr. Sebastian Scherer,
                 Dr. Wenshan Wang, Yikuan Fang, and the AirLab team for their guidance.
-                The in-browser splat renderer is adapted from
-                <a href="https://github.com/antimatter15/splat" target="_blank" rel="noopener">antimatter15/splat</a> (MIT).
             </p>
         </section>
 
@@ -506,16 +502,6 @@
             });
         }
 
-        // click-to-load splat viewer
-        document.getElementById('splat-load').addEventListener('click', function () {
-            var embed = document.getElementById('splat-embed');
-            var iframe = document.createElement('iframe');
-            iframe.src = 'assets/cmu/media/splat_viewer.html';
-            iframe.title = 'Interactive Gaussian-splat scene flythrough';
-            iframe.allow = 'fullscreen';
-            embed.innerHTML = '';
-            embed.appendChild(iframe);
-        });
     </script>
 </body>
 </html>
