@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="3D Gaussian Splatting for Learned Drone Navigation — a photorealistic, differentiable simulator for training monocular RGB drone navigation policies. Research at CMU's AirLab through the RISS program.">
+    <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <title>3DGS Drone Navigation · Daniel Kim</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="site-title">Daniel Kim</a>
+                <div class="nav-links">
+                    <a href="index.html">About</a>
+                    <a href="projects.html" class="active">Projects</a>
+                    <a href="publications.html">Publications</a>
+                    <a href="resume.html">Resume</a>
+                    <button id="theme-toggle">🌙 Dark Mode</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+    <style>
+        main.container {
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .tech-card {
+            background: rgba(0,0,0,0.03);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        [data-theme="dark"] .tech-card {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.08);
+        }
+        .tech-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--text-color); }
+        .tech-card p { font-size: 0.9rem; color: var(--accent-color); margin: 0; }
+        h1, h2, h3 { color: var(--text-color); }
+        p, ul, li, span { color: var(--accent-color); }
+        .wip-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(234, 179, 8, 0.12);
+            border: 1px solid rgba(234, 179, 8, 0.45);
+            color: var(--text-color);
+            border-radius: 999px;
+            padding: 0.35rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .caption {
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.7rem;
+            color: var(--accent-color);
+        }
+        /* --- comparison slider --- */
+        .cmp {
+            position: relative;
+            max-width: 560px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .cmp img { display: block; width: 100%; pointer-events: none; }
+        .cmp .cmp-top {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .cmp .cmp-top img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .cmp input[type=range] {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            cursor: ew-resize;
+        }
+        .cmp .cmp-bar {
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 3px;
+            background: #fff;
+            box-shadow: 0 0 8px rgba(0,0,0,0.6);
+            pointer-events: none;
+        }
+        .cmp .cmp-bar::after {
+            content: "◂ ▸";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            color: #111;
+            border-radius: 999px;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+        .cmp .cmp-label {
+            position: absolute;
+            top: 10px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.15rem 0.6rem;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+        .cmp .cmp-label.left { left: 10px; }
+        .cmp .cmp-label.right { right: 10px; }
+        .cmp-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        /* --- video grids --- */
+        .vid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .vid-card { margin: 0; }
+        .vid-card video {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            background: #000;
+        }
+        .vid-card figcaption {
+            font-size: 0.82rem;
+            margin-top: 0.45rem;
+            color: var(--accent-color);
+            text-align: center;
+        }
+        .policy-chip {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 999px;
+            padding: 0.05rem 0.55rem;
+            margin-right: 0.3rem;
+            vertical-align: 1px;
+        }
+        .chip-rgb { background: rgba(37, 99, 235, 0.15); color: #2563eb; }
+        [data-theme="dark"] .chip-rgb { color: #7dd3fc; }
+        .chip-depth { background: rgba(16, 185, 129, 0.15); color: #059669; }
+        [data-theme="dark"] .chip-depth { color: #34d399; }
+        /* --- scene library --- */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.6rem;
+        }
+        .scene-grid figure { position: relative; margin: 0; border-radius: 8px; overflow: hidden; }
+        .scene-grid img { width: 100%; height: 110px; object-fit: cover; display: block; transition: transform 0.25s ease; }
+        .scene-grid figure:hover img { transform: scale(1.06); }
+        .scene-grid figcaption {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            font-size: 0.68rem;
+            color: #fff;
+            background: linear-gradient(transparent, rgba(0,0,0,0.75));
+            padding: 0.9rem 0.5rem 0.25rem;
+            text-align: center;
+        }
+        /* --- splat viewer embed --- */
+        #splat-embed {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+            background: #0a0c10 url('assets/cmu/media/hero_city.jpg') center/cover no-repeat;
+            aspect-ratio: 16 / 9;
+        }
+        #splat-embed iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        #splat-load {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: rgba(10,12,16,0.45);
+            color: #fff;
+            border: 0;
+            cursor: pointer;
+            font: inherit;
+            width: 100%;
+        }
+        #splat-load .play {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            background: rgba(56,189,248,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #08222e;
+        }
+        #splat-load span { color: #fff; }
+        #splat-load small { color: rgba(255,255,255,0.75); }
+    </style>
+
+        <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
+            <div style="margin-bottom:1rem;"><span class="wip-banner">🚧 Research in progress · CMU RISS 2026</span></div>
+            <h1 class="text-gradient" style="font-size:2.6rem; line-height:1.2;">
+                3D Gaussian Splatting for Learned Drone Navigation
+            </h1>
+            <p style="max-width:680px; margin:1rem auto; font-size:1.25rem; font-weight:600;">
+                A photorealistic, differentiable simulator for training drones to fly from a single RGB camera.
+            </p>
+            <p style="max-width:680px; margin:0.5rem auto; font-size:0.95rem;">
+                Daniel Kim<sup>1</sup>, Yikuan Fang<sup>2</sup>, Wenshan Wang<sup>2</sup>, Sebastian Scherer<sup>2</sup><br>
+                <sup>1</sup>Rice University &nbsp;·&nbsp; <sup>2</sup>Carnegie Mellon University, AirLab
+            </p>
+            <div style="display:flex; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-top:0.8rem;">
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🛩️ Robot Learning</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🎨 3D Gaussian Splatting</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">🔥 PyTorch / CUDA</span>
+                <span class="tag" style="background: rgba(0,0,0,0.08); font-size:0.8rem;">∇ Differentiable Simulation</span>
+            </div>
+        </section>
+
+        <section style="text-align:center; margin-bottom:3.5rem;">
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;"
+               href="assets/cmu/Poster_draft.pdf" target="_blank" rel="noopener">
+               🖼️ Poster (draft)
+            </a>
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;"
+               href="assets/cmu/presentation_draft.pdf" target="_blank" rel="noopener">
+               📽️ Presentation (draft)
+            </a>
+            <span class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem; opacity:0.65; cursor:default;">
+               📄 Paper — in preparation
+            </span>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <img loading="lazy" src="assets/cmu/media/hero_forest.jpg" alt="Gaussian-splat reconstruction of a forest scene used as a flight environment"
+                 style="width:100%; border-radius:12px; box-shadow:0 12px 32px rgba(0,0,0,0.12); display:block;">
+            <p class="caption">A forest environment reconstructed as 3D Gaussians — one of the simulator's flight scenes.</p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Overview</h2>
+            <p style="margin-top:1rem;">
+                Drones that navigate with learned policies almost always rely on <strong>depth sensors</strong>, because depth is
+                invariant to appearance — but depth sensors add payload, power draw, and cost. A policy that flies from a single
+                RGB camera would be far lighter and cheaper, yet RGB policies are notoriously hard to train because they need
+                <em>visually diverse, photorealistic</em> training environments that classic simulators can't provide.
+            </p>
+            <p style="margin-top:1rem;">
+                This project builds that missing environment: a lightweight, GPU-resident simulator that renders photorealistic
+                RGB <em>and</em> metrically accurate depth from <strong>3D Gaussian Splat</strong> reconstructions of real and synthetic
+                outdoor scenes — in the same differentiable forward pass. On top of it, a quadrotor dynamics model, collision
+                checking against the reconstructed geometry, and an imitation-learning pipeline train monocular RGB navigation
+                policies across a growing library of diverse scenes.
+            </p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Fly through a reconstructed scene</h2>
+            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
+                This is a real scene from the simulator — 500,000 Gaussians rendered live in your browser.
+                Drag to look around, scroll to zoom, and use <strong>WASD + arrow keys</strong> to fly.
+            </p>
+            <div id="splat-embed">
+                <button id="splat-load" type="button" aria-label="Load interactive 3D scene">
+                    <span class="play">▶</span>
+                    <span style="font-weight:600;">Launch interactive flythrough</span>
+                    <small>loads ~16 MB · WebGL2</small>
+                </button>
+            </div>
+            <p class="caption">Urban scene reconstructed from the TartanAir dataset, viewed with a WebGL Gaussian-splat renderer.</p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>One forward pass: photorealistic RGB + metric depth</h2>
+            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
+                The same Gaussians produce the policy's RGB observation and a metrically accurate depth map — so depth
+                supervision, collision penalties, and rendering all live in one autodiff graph. Drag the sliders to compare.
+            </p>
+            <div class="cmp-row">
+                <div>
+                    <div class="cmp" data-cmp>
+                        <img src="assets/cmu/media/urban_construction_render_rgb.jpg" alt="Rendered RGB view of the urban construction scene">
+                        <div class="cmp-top"><img src="assets/cmu/media/urban_construction_render_depth.jpg" alt="Rendered depth map of the same view"></div>
+                        <div class="cmp-bar"></div>
+                        <span class="cmp-label left">Rendered depth</span>
+                        <span class="cmp-label right">Rendered RGB</span>
+                        <input type="range" min="0" max="100" value="50" aria-label="Compare rendered depth and RGB">
+                    </div>
+                    <p class="caption">Rendered RGB ↔ rendered depth, same forward pass.</p>
+                </div>
+                <div>
+                    <div class="cmp" data-cmp>
+                        <img src="assets/cmu/media/seaside_town_render_rgb.jpg" alt="Gaussian-splat rendering of the seaside town scene">
+                        <div class="cmp-top"><img src="assets/cmu/media/seaside_town_gt_rgb.jpg" alt="Ground-truth image of the seaside town scene"></div>
+                        <div class="cmp-bar"></div>
+                        <span class="cmp-label left">Ground truth</span>
+                        <span class="cmp-label right">Our reconstruction</span>
+                        <input type="range" min="0" max="100" value="50" aria-label="Compare ground truth and reconstruction">
+                    </div>
+                    <p class="caption">Ground-truth camera image ↔ our reconstruction.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>RGB policy vs. depth policy</h2>
+            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
+                Two policies flying the same construction-site scenario in the simulator. The
+                <span class="policy-chip chip-depth">DEPTH</span> policy observes depth maps; the
+                <span class="policy-chip chip-rgb">RGB</span> policy flies from the color camera alone —
+                the harder problem this project targets. Each video is that policy's own rollout.
+            </p>
+            <div class="vid-grid">
+                <figure class="vid-card">
+                    <video src="assets/cmu/media/flight_construction_rgb_clean.mp4" poster="assets/cmu/media/flight_construction_rgb_clean.jpg" muted loop playsinline preload="none" controls></video>
+                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Monocular RGB policy — collision-free run</figcaption>
+                </figure>
+                <figure class="vid-card">
+                    <video src="assets/cmu/media/flight_construction_depth_clean.mp4" poster="assets/cmu/media/flight_construction_depth_clean.jpg" muted loop playsinline preload="none" controls></video>
+                    <figcaption><span class="policy-chip chip-depth">DEPTH</span>Depth-supervised policy — collision-free run</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Policy flights across environments</h2>
+            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
+                Onboard views of learned policies flying goal-directed missions in reconstructed and procedurally
+                assembled scenes. Hover (or tap play) to watch.
+            </p>
+            <div class="vid-grid">
+                <figure class="vid-card">
+                    <video src="assets/cmu/media/flight_construction_rgb.mp4" poster="assets/cmu/media/flight_construction_rgb.jpg" muted loop playsinline preload="none" controls></video>
+                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Construction site (photoreal)</figcaption>
+                </figure>
+                <figure class="vid-card">
+                    <video src="assets/cmu/media/flight_forest_rgb.mp4" poster="assets/cmu/media/flight_forest_rgb.jpg" muted loop playsinline preload="none" controls></video>
+                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Forest canopy (photoreal)</figcaption>
+                </figure>
+                <figure class="vid-card">
+                    <video src="assets/cmu/media/flight_benchmark_rgb_cert.mp4" poster="assets/cmu/media/flight_benchmark_rgb_cert.jpg" muted loop playsinline preload="none" controls></video>
+                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Obstacle-course benchmark scenario</figcaption>
+                </figure>
+                <figure class="vid-card">
+                    <video src="assets/cmu/media/flight_obstacle_field_rgb.mp4" poster="assets/cmu/media/flight_obstacle_field_rgb.jpg" muted loop playsinline preload="none" controls></video>
+                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Dense obstacle field (procedural)</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>A growing library of diverse scenes</h2>
+            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
+                The main weakness of prior splat-based flight simulators is that they train in one or two environments.
+                This simulator instead draws on a library of reconstructed scenes — urban, natural, industrial, and
+                stylized — so policies see real visual diversity during training. All scenes come from existing public
+                datasets; no new data was captured.
+            </p>
+            <div class="scene-grid">
+                <figure><img loading="lazy" src="assets/cmu/media/scene_construction_site.jpg" alt="Construction site scene"><figcaption>Construction site</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_japanese_alley.jpg" alt="Japanese alley scene"><figcaption>Japanese alley</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_downtown.jpg" alt="Downtown scene"><figcaption>Downtown</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_gascola.jpg" alt="Gascola forest scene"><figcaption>Gascola</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_nordic_harbor.jpg" alt="Nordic harbor scene"><figcaption>Nordic harbor</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_old_town_fall.jpg" alt="Old town in fall scene"><figcaption>Old town (fall)</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_hong_kong.jpg" alt="Hong Kong street scene"><figcaption>Hong Kong</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_castle_fortress.jpg" alt="Castle fortress scene"><figcaption>Castle fortress</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_desert_gas_station.jpg" alt="Desert gas station scene"><figcaption>Desert gas station</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_japanese_city.jpg" alt="Japanese city scene"><figcaption>Japanese city</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_middle_east.jpg" alt="Middle-eastern city scene"><figcaption>Middle-eastern city</figcaption></figure>
+                <figure><img loading="lazy" src="assets/cmu/media/scene_old_scandinavia.jpg" alt="Old Scandinavia scene"><figcaption>Old Scandinavia</figcaption></figure>
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>How it works</h2>
+            <div class="tech-grid" style="margin-top:1.5rem;">
+                <div class="tech-card">
+                    <h3>🏗️ Scene reconstruction</h3>
+                    <p>
+                        Outdoor scenes from public datasets (TartanAir and others) are reconstructed as Gaussian splats with
+                        <strong>depth supervision and free-space regularization</strong>, which cut depth error by an order of magnitude
+                        and suppress floaters compared to vanilla 3DGS — critical, since the same geometry drives collision checking.
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>⚡ Differentiable simulation</h3>
+                    <p>
+                        A single Python process couples a <strong>gsplat</strong> CUDA rasterizer with a hand-rolled, vectorized
+                        <strong>PyTorch quadrotor model</strong> — no ROS, Unity, or middleware. Dynamics, rendering, and collision
+                        signals are differentiable end-to-end, supporting both classic RL and gradient-through-simulation training.
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>🎓 Imitation learning</h3>
+                    <p>
+                        A trajectory-optimization expert with access to the full 3D scene plans collision-free paths; a student
+                        policy seeing only <strong>onboard RGB (or depth) + state</strong> learns to reproduce them across many scenes
+                        and randomized missions in parallel.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Where the project stands</h2>
+            <ul style="margin-top:1rem; padding-left:1.2rem; line-height:2;">
+                <li><strong>Simulator complete:</strong> photorealistic rendering, metric depth, collision checking, and batched dynamics run end-to-end at training speeds.</li>
+                <li><strong>Reconstruction quality:</strong> our depth-supervised training matches vanilla 3DGS in image quality while producing far more accurate geometry — depth error drops by roughly 10× and floater artifacts nearly vanish.</li>
+                <li><strong>Depth policies transfer:</strong> depth-supervised students trained in the simulator fly competitively with established baselines on a held-out evaluation suite.</li>
+                <li><strong>RGB policies are the frontier:</strong> monocular RGB students already complete a meaningful share of evaluation scenarios, and closing the remaining gap to depth policies — via more scene diversity and better training regimes — is the active focus of this work.</li>
+            </ul>
+            <p style="margin-top:1rem; font-size:0.9rem;">
+                Quantitative benchmarks are still being finalized — full tables will appear with the paper. Next up:
+                deploying a trained RGB policy on a physical quadrotor, extending reconstruction beyond TartanAir to broader
+                real-world data, and exploring training regimes beyond imitation learning.
+            </p>
+        </section>
+
+        <section style="margin-bottom:4rem;">
+            <h2>Acknowledgements</h2>
+            <p style="margin-top:1rem; font-size:0.95rem;">
+                This work is being carried out at Carnegie Mellon University's
+                <a href="https://theairlab.org" target="_blank" rel="noopener">AirLab</a> through the
+                <a href="https://riss.ri.cmu.edu" target="_blank" rel="noopener">Robotics Institute Summer Scholars (RISS)</a> program.
+                Special thanks to Rachel Burcin and Dr. John Dolan for organizing the program, and to Dr. Sebastian Scherer,
+                Dr. Wenshan Wang, Yikuan Fang, and the AirLab team for their guidance.
+                The in-browser splat renderer is adapted from
+                <a href="https://github.com/antimatter15/splat" target="_blank" rel="noopener">antimatter15/splat</a> (MIT).
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
+        <p>&copy; 2026 Daniel Kim. <a href="#">Back to Top</a></p>
+    </footer>
+
+    <script>
+        // comparison sliders
+        document.querySelectorAll('[data-cmp]').forEach(function (cmp) {
+            var range = cmp.querySelector('input[type=range]');
+            var top = cmp.querySelector('.cmp-top');
+            var bar = cmp.querySelector('.cmp-bar');
+            function update() {
+                var v = range.value;
+                top.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+                bar.style.left = 'calc(' + v + '% - 1.5px)';
+            }
+            range.addEventListener('input', update);
+            update();
+        });
+
+        // hover-to-play videos (desktop); controls remain for tap on mobile
+        if (window.matchMedia('(hover: hover)').matches) {
+            document.querySelectorAll('.vid-card video').forEach(function (v) {
+                v.addEventListener('mouseenter', function () { v.play(); });
+                v.addEventListener('mouseleave', function () { v.pause(); });
+            });
+        }
+
+        // click-to-load splat viewer
+        document.getElementById('splat-load').addEventListener('click', function () {
+            var embed = document.getElementById('splat-embed');
+            var iframe = document.createElement('iframe');
+            iframe.src = 'assets/cmu/media/splat_viewer.html';
+            iframe.title = 'Interactive Gaussian-splat scene flythrough';
+            iframe.allow = 'fullscreen';
+            embed.innerHTML = '';
+            embed.appendChild(iframe);
+        });
+    </script>
+</body>
+</html>

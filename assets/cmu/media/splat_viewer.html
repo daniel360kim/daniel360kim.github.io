@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Construction — 3DGS Flythrough · Daniel Kim</title>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #0a0c10;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        #canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            touch-action: none;
+        }
+        #spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top-color: #38bdf8;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+            z-index: 5;
+        }
+        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+        #progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #38bdf8;
+            z-index: 6;
+            width: 0%;
+        }
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #f87171;
+            font-size: 0.9rem;
+            z-index: 5;
+            text-align: center;
+        }
+        #hud {
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            color: rgba(230,237,243,0.85);
+            background: rgba(13,17,23,0.65);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            z-index: 4;
+            pointer-events: none;
+        }
+        #hud b { color: #38bdf8; font-weight: 600; }
+        #quality, #caminfo {
+            position: absolute;
+            right: 12px;
+            color: rgba(230,237,243,0.6);
+            font-size: 0.7rem;
+            z-index: 4;
+            pointer-events: none;
+        }
+        #quality { top: 10px; }
+        #caminfo { top: 28px; }
+        @media (max-width: 600px) { #hud .desktop-only { display: none; } }
+    </style>
+</head>
+<body>
+    <div id="progress"></div>
+    <div id="message"></div>
+    <div id="spinner"></div>
+    <canvas id="canvas"></canvas>
+    <div id="hud">
+        <b>Drag</b> to orbit &nbsp;·&nbsp; <b>Scroll / pinch</b> to zoom
+        <span class="desktop-only"><br><b>WASD + arrow keys</b> to fly through the scene</span>
+    </div>
+    <div id="quality"><span id="fps"></span></div>
+    <div id="caminfo"><span id="camid"></span></div>
+    <script src="splat-viewer.js"></script>
+</body>
+</html>
