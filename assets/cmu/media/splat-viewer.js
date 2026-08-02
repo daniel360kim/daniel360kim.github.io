@@ -761,8 +761,10 @@ async function main() {
     const reader = req.body.getReader();
     let splatData = new Uint8Array(req.headers.get("content-length"));
 
-    const downsample =
-        splatData.length / rowLength > 500000 ? 1 : 1 / devicePixelRatio;
+    // always render at native device resolution (the upstream heuristic
+    // dropped to CSS-pixel resolution for large scenes, which reads blurry
+    // on hiDPI displays), and supersample at least 1.5x on low-DPI displays
+    const downsample = 1 / Math.max(devicePixelRatio || 1, 1.5);
     console.log(splatData.length / rowLength, downsample);
 
     const worker = new Worker(

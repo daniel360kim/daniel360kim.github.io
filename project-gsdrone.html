@@ -303,7 +303,7 @@
                 <button id="splat-load" type="button" aria-label="Load interactive 3D scene">
                     <span class="play">▶</span>
                     <span style="font-weight:600;">Launch interactive flythrough</span>
-                    <small>loads ~34 MB · WebGL2</small>
+                    <small>loads ~48 MB · WebGL2</small>
                 </button>
             </div>
             <p class="caption">Urban scene reconstructed from the TartanAir dataset, viewed with a WebGL Gaussian-splat renderer.</p>
@@ -371,7 +371,8 @@
                 Two policies flying the same construction-site scenario in the simulator. The
                 <span class="policy-chip chip-depth">DEPTH</span> policy observes depth maps; the
                 <span class="policy-chip chip-rgb">RGB</span> policy flies from the color camera alone —
-                the harder problem this project targets. Each video is that policy's own rollout.
+                the harder problem this project targets. Each video is that policy's own rollout —
+                hover to play.
             </p>
             <div class="vid-grid">
                 <figure class="vid-card">
@@ -381,32 +382,6 @@
                 <figure class="vid-card">
                     <video src="assets/cmu/media/flight_construction_depth_clean.mp4" poster="assets/cmu/media/flight_construction_depth_clean.jpg" muted loop playsinline preload="none" controls></video>
                     <figcaption><span class="policy-chip chip-depth">DEPTH</span>Depth-supervised policy — collision-free run</figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <section style="margin-bottom:4rem;">
-            <h2>Policy flights across environments</h2>
-            <p style="margin-top:0.6rem; margin-bottom:1.2rem; font-size:0.95rem;">
-                Onboard views of learned policies flying goal-directed missions in reconstructed and procedurally
-                assembled scenes. Hover (or tap play) to watch.
-            </p>
-            <div class="vid-grid">
-                <figure class="vid-card">
-                    <video src="assets/cmu/media/flight_construction_rgb.mp4" poster="assets/cmu/media/flight_construction_rgb.jpg" muted loop playsinline preload="none" controls></video>
-                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Construction site (photoreal)</figcaption>
-                </figure>
-                <figure class="vid-card">
-                    <video src="assets/cmu/media/flight_forest_rgb.mp4" poster="assets/cmu/media/flight_forest_rgb.jpg" muted loop playsinline preload="none" controls></video>
-                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Forest canopy (photoreal)</figcaption>
-                </figure>
-                <figure class="vid-card">
-                    <video src="assets/cmu/media/flight_benchmark_rgb_cert.mp4" poster="assets/cmu/media/flight_benchmark_rgb_cert.jpg" muted loop playsinline preload="none" controls></video>
-                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Obstacle-course benchmark scenario</figcaption>
-                </figure>
-                <figure class="vid-card">
-                    <video src="assets/cmu/media/flight_obstacle_field_rgb.mp4" poster="assets/cmu/media/flight_obstacle_field_rgb.jpg" muted loop playsinline preload="none" controls></video>
-                    <figcaption><span class="policy-chip chip-rgb">RGB</span>Dense obstacle field (procedural)</figcaption>
                 </figure>
             </div>
         </section>
@@ -525,6 +500,7 @@
         // hover-to-play videos (desktop); controls remain for tap on mobile
         if (window.matchMedia('(hover: hover)').matches) {
             document.querySelectorAll('.vid-card video:not(.autoplay-inview)').forEach(function (v) {
+                v.removeAttribute('controls');
                 v.addEventListener('mouseenter', function () { v.play(); });
                 v.addEventListener('mouseleave', function () { v.pause(); });
             });
