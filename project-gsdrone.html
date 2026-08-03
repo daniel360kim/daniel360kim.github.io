@@ -323,14 +323,6 @@
                     <p class="caption">Ground-truth camera image ↔ our reconstruction.</p>
                 </div>
             </div>
-            <div class="fig-card fig-narrow" style="margin-top:2.5rem;">
-                <img loading="lazy" src="assets/cmu/media/fig_supervision.png" alt="Diagram: Gaussian splats rendered to RGB and depth in one differentiable pass, supervised against TartanAir ground-truth RGB and depth">
-            </div>
-            <p class="caption">
-                How a scene is trained: one differentiable render pass produces both images, so the reconstruction is
-                supervised with an RGB loss <em>and</em> an edge-weighted depth loss against the dataset's ground truth.
-                The depth term is what makes the geometry — and therefore collision checking — trustworthy.
-            </p>
         </section>
 
         <section style="margin-bottom:4rem;">
@@ -385,11 +377,7 @@
                 a point cloud and collision field for safety checking, metric depth, and a dense set of expert
                 trajectories to learn from.
             </p>
-            <div class="fig-card">
-                <img loading="lazy" src="assets/cmu/media/fig_pipeline.png" alt="Grid of three scenes by five columns: RGB view, point cloud, ESDF collision geometry, metric depth, and expert trajectories">
-            </div>
-            <p class="caption">From reconstruction to flyable tasks — RGB, geometry, collision field, metric depth, and expert trajectory sampling for three scenes.</p>
-            <div class="tech-grid" style="margin-top:2.5rem;">
+            <div class="tech-grid" style="margin-top:1.5rem;">
                 <div class="tech-card">
                     <h3>🏗️ Scene reconstruction</h3>
                     <p>
@@ -415,13 +403,6 @@
                     </p>
                 </div>
             </div>
-            <div class="fig-card fig-narrow" style="margin-top:2.5rem;">
-                <img loading="lazy" src="assets/cmu/media/fig_policy_method.png" alt="Three-step diagram: a privileged trajectory-optimization expert generates dodge labels, an RGB student is cloned from them, and the student deploys on RGB alone">
-            </div>
-            <p class="caption">
-                The imitation-learning recipe: a privileged expert with full scene geometry plans multi-hypothesis dodge
-                trajectories; a student network is cloned from those labels; at deployment the student flies from RGB alone.
-            </p>
         </section>
 
         <section style="margin-bottom:4rem;">
