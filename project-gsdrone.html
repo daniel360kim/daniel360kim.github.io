@@ -196,20 +196,6 @@
             padding: 0.9rem 0.5rem 0.25rem;
             text-align: center;
         }
-        /* --- poster figures --- */
-        .fig-card {
-            background: #fff;
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-        [data-theme="dark"] .fig-card {
-            border-color: rgba(255,255,255,0.1);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-        }
-        .fig-card img { display: block; width: 100%; }
-        .fig-narrow { max-width: 620px; margin: 0 auto; }
     </style>
 
         <section class="project-detail-header" style="text-align:center; margin-bottom:3rem;">
@@ -413,20 +399,6 @@
                 <li><strong>Depth policies transfer:</strong> depth-supervised students trained in the simulator fly competitively with established baselines on a held-out evaluation suite.</li>
                 <li><strong>RGB policies are the frontier:</strong> monocular RGB students already complete a meaningful share of evaluation scenarios, and closing the remaining gap to depth policies — via more scene diversity and better training regimes — is the active focus of this work.</li>
             </ul>
-            <div class="fig-card" style="margin-top:2rem;">
-                <img loading="lazy" src="assets/cmu/media/fig_policy_rollout.png" alt="Closed-loop RGB policy rollout in the Seaside Town scene: trajectory over the clearance field, clearance-vs-time plot, and onboard camera filmstrip">
-            </div>
-            <p class="caption">
-                A closed-loop monocular RGB student flying in the simulator: the flown path over the scene's clearance
-                field, clearance staying above the collision band while goal distance falls, and the onboard view.
-            </p>
-            <div class="fig-card" style="margin-top:2rem;">
-                <img loading="lazy" src="assets/cmu/media/fig_fidelity.png" alt="Per-scene dot plot comparing PSNR, LPIPS, and depth error between training views and held-out novel views">
-            </div>
-            <p class="caption">
-                Why training in the splat sim is trustworthy: rendering fidelity and depth accuracy barely degrade on
-                camera views the reconstruction never saw during training.
-            </p>
             <p style="margin-top:1rem; font-size:0.9rem;">
                 Quantitative benchmarks are still being finalized — full tables will appear with the paper. Next up:
                 deploying a trained RGB policy on a physical quadrotor, extending reconstruction beyond TartanAir to broader
