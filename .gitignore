@@ -1,0 +1,8 @@
+# Source files for the CMU/RISS deliverables — too large for a Pages repo.
+# Only the web-optimized exports under assets/cmu/ are committed.
+assets/cmu/*.pptx
+assets/cmu/2026-RISS-Video-KIM-Daniel-WANG.mp4
+assets/cmu/2026-RISS-paper-KIM-Daniel-WANG.pdf
+assets/cmu/Poster_print.pdf
+
+Untitled

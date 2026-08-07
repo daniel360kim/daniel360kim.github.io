@@ -40,7 +40,11 @@
 
                 <div class="project-row">
                     <a href="project-gsdrone.html" class="img-link">
-                        <img loading="lazy" src="assets/cmu/media/cover_seasidetown.jpg" class="showcase-img" alt="Drone's-eye rendered view of the reconstructed Seaside Town scene">
+                        <video class="showcase-img cover-loop"
+                               src="assets/cmu/media/cover_flythrough_loop.mp4"
+                               poster="assets/cmu/media/cover_flythrough_loop.jpg"
+                               muted loop playsinline autoplay preload="metadata"
+                               aria-label="Novel-view flythrough of the reconstructed Seaside Town scene, split diagonally between rendered RGB and rendered metric depth"></video>
                     </a>
                     <div class="showcase-text">
                         <h2>3DGS Drone Navigation</h2>
@@ -159,6 +163,25 @@
     <footer class="container" style="padding: 20px 0; text-align: center; border-top: 1px solid #eee; margin-top: 4rem;">
         <p>&copy; 2026 Daniel Kim. <a href="#">Back to Top</a></p>
     </footer>
+
+    <script>
+        // Cover loops: only spend bandwidth while on screen, and honor reduced-motion.
+        (function () {
+            var loops = document.querySelectorAll('video.cover-loop');
+            if (!loops.length) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                loops.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.play().catch(function () {}); }
+                    else { e.target.pause(); }
+                });
+            }, { threshold: 0.25 });
+            loops.forEach(function (v) { io.observe(v); });
+        })();
+    </script>
 
 </body>
 </html>

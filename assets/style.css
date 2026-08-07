@@ -679,6 +679,18 @@ footer {
     background-color: var(--card-bg);
 }
 
+/* Looping video used in place of a cover image */
+video.showcase-img {
+    display: block;
+    background-color: #000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    video.cover-loop { /* JS pauses it; the poster frame stays visible */
+        animation: none;
+    }
+}
+
 /* Ensure the link container takes up the 50% width */
 .img-link {
     width: 50%;

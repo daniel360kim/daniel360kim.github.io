@@ -220,16 +220,20 @@
 
         <section style="text-align:center; margin-bottom:3.5rem;">
             <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;"
-               href="assets/cmu/Poster_draft.pdf" target="_blank" rel="noopener">
+               href="assets/cmu/2026-RISS-paper-KIM-Daniel-WANG-web.pdf" target="_blank" rel="noopener">
+               📄 Paper (draft)
+            </a>
+            <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;"
+               href="assets/cmu/Poster_print-web.pdf" target="_blank" rel="noopener">
                🖼️ Poster (draft)
             </a>
             <a class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem;"
                href="assets/cmu/presentation_draft.pdf" target="_blank" rel="noopener">
                📽️ Presentation (draft)
             </a>
-            <span class="tag" style="padding:0.6rem 1rem; margin:0.4rem; font-size:0.9rem; opacity:0.65; cursor:default;">
-               📄 Paper — in preparation
-            </span>
+            <p class="caption" style="margin-top:1rem;">
+                Working drafts from the RISS 2026 cycle — numbers and figures are still being revised.
+            </p>
         </section>
 
         <section style="margin-bottom:4rem;">
@@ -394,15 +398,18 @@
         <section style="margin-bottom:4rem;">
             <h2>Where the project stands</h2>
             <ul style="margin-top:1rem; padding-left:1.2rem; line-height:2;">
-                <li><strong>Simulator complete:</strong> photorealistic rendering, metric depth, collision checking, and batched dynamics run end-to-end at training speeds.</li>
-                <li><strong>Reconstruction quality:</strong> our depth-supervised training matches vanilla 3DGS in image quality while producing far more accurate geometry — depth error drops by roughly 10× and floater artifacts nearly vanish.</li>
-                <li><strong>Depth policies transfer:</strong> depth-supervised students trained in the simulator fly competitively with established baselines on a held-out evaluation suite.</li>
-                <li><strong>RGB policies are the frontier:</strong> monocular RGB students already complete a meaningful share of evaluation scenarios, and closing the remaining gap to depth policies — via more scene diversity and better training regimes — is the active focus of this work.</li>
+                <li><strong>Simulator complete:</strong> photorealistic rendering, metric depth, collision checking, and batched dynamics run end-to-end at training speeds, across ten reconstructed scenes.</li>
+                <li><strong>Reconstruction quality:</strong> adding metric-depth supervision costs under half a decibel of PSNR against vanilla 3DGS, and buys an order of magnitude in geometry — depth error falls from ~0.97 m to ~0.09 m, and floating artifacts from 11.5% of pixels to 0.4%.</li>
+                <li><strong>Fidelity holds off the capture path:</strong> sampling novel views at growing lateral offset, rendering and depth accuracy degrade gradually rather than collapsing — so a policy can fly <em>through</em> the volume, not just along the trajectory the scene was captured on.</li>
+                <li><strong>Depth policies work:</strong> on a 17-scenario benchmark in Isaac Sim, our depth student clears 10/17 with positive mean clearance — behind the strongest depth baselines from the literature, well ahead of the weakest.</li>
+                <li><strong>RGB is the open problem:</strong> trained on the identical corpus and recipe, the monocular RGB student clears 5/17, and every scenario it clears is one the depth student also clears. That shape of gap looks like a training corpus that hasn't seen enough visual variation yet — not a modality that can't support navigation.</li>
+                <li><strong>Hardware in the loop:</strong> a preliminary check flew a depth-based policy on a Starling 2 Max with motion-capture state estimation and a time-of-flight sensor, clearing two obstacles. It validates the hardware integration only — a fully onboard monocular flight is the test this pipeline is built toward.</li>
             </ul>
             <p style="margin-top:1rem; font-size:0.9rem;">
-                Quantitative benchmarks are still being finalized — full tables will appear with the paper. Next up:
-                deploying a trained RGB policy on a physical quadrotor, extending reconstruction beyond TartanAir to broader
-                real-world data, and exploring training regimes beyond imitation learning.
+                These numbers come from a draft still under revision; the benchmark spans 17 scenarios and the reconstruction
+                ablation runs on a single held-out scene, so both want to be widened. Next up: a larger and more visually diverse
+                scene library beyond TartanAir, deploying a trained RGB policy on a physical quadrotor, and training regimes
+                beyond imitation learning.
             </p>
         </section>
 
