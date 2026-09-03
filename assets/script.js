@@ -34,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let particlesArray;
         let mouse = { x: null, y: null, radius: 150 };
 
+        // Cache the accent color instead of calling getComputedStyle every frame.
+        // On a cold load Safari can run this script before the stylesheet has
+        // applied, which used to leave the color empty (black particles).
+        let accentColor = '#555555';
+        const refreshAccentColor = () => {
+            const c = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
+            if (c) accentColor = c;
+        };
+        refreshAccentColor();
+
         const resizeCanvas = () => {
             canvas.width = canvas.parentElement.offsetWidth;
             canvas.height = window.innerHeight;
@@ -58,8 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                // Use CSS variable for color dynamically
-                const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
                 ctx.fillStyle = accentColor;
                 ctx.fill();
             }
@@ -107,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
                     if (distance < (canvas.width/7) * (canvas.height/7)) {
                         opacityValue = 1 - (distance/20000);
-                        const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
                         ctx.strokeStyle = accentColor;
                         ctx.lineWidth = 1;
                         ctx.globalAlpha = opacityValue * 0.2;
@@ -133,6 +140,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
             resizeCanvas();
             init();
+        });
+
+        // Once CSS, fonts and images are in, layout is final: re-measure and rebuild.
+        window.addEventListener('load', () => {
+            refreshAccentColor();
+            resizeCanvas();
+            init();
+        });
+
+        // Pick up the new accent color when the theme toggles.
+        new MutationObserver(refreshAccentColor).observe(document.documentElement, {
+            attributes: true, attributeFilter: ['data-theme']
         });
 
         init();
