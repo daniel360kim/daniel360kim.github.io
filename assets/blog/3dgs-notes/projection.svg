@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" role="img" aria-labelledby="fig-title fig-desc">
+  <title id="fig-title">Projecting 3D Gaussians onto the image plane</title>
+  <desc id="fig-desc">Three 3D Gaussian blobs at different depths in world space, each connected by a dashed projection ray through a shared camera center. Where each ray crosses the image plane, a smaller 2D ellipse marks the resulting projected Gaussian.</desc>
+
+  <style>
+    .ink    { fill: #1a1a1a; }
+    .muted  { fill: #6b7280; }
+    .plane  { stroke: #9aa4b2; stroke-width: 1.5; }
+    .pinhole{ fill: #1a1a1a; }
+
+    .c1 .blob   { fill: url(#g1); stroke: #2563eb; stroke-width: 1.5; }
+    .c1 .center,.c1 .splat { fill: #2563eb; }
+    .c1 .ray    { stroke: #2563eb; }
+
+    .c2 .blob   { fill: url(#g2); stroke: #0e9488; stroke-width: 1.5; }
+    .c2 .center,.c2 .splat { fill: #0e9488; }
+    .c2 .ray    { stroke: #0e9488; }
+
+    .c3 .blob   { fill: url(#g3); stroke: #7c6fe0; stroke-width: 1.5; }
+    .c3 .center,.c3 .splat { fill: #7c6fe0; }
+    .c3 .ray    { stroke: #7c6fe0; }
+
+    .ray   { stroke-width: 1.3; stroke-dasharray: 4 4; opacity: 0.55; fill: none; }
+    .splat { opacity: 0.85; }
+    .label   { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 15px; }
+    .label-sm{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12.5px; }
+
+    @media (prefers-color-scheme: dark) {
+      .ink    { fill: #e6edf3; }
+      .muted  { fill: #9aa7b4; }
+      .plane  { stroke: #4b5563; }
+      .pinhole{ fill: #e6edf3; }
+
+      .c1 .blob   { fill: url(#g1d); stroke: #38bdf8; }
+      .c1 .center,.c1 .splat { fill: #38bdf8; }
+      .c1 .ray    { stroke: #38bdf8; }
+
+      .c2 .blob   { fill: url(#g2d); stroke: #34d399; }
+      .c2 .center,.c2 .splat { fill: #34d399; }
+      .c2 .ray    { stroke: #34d399; }
+
+      .c3 .blob   { fill: url(#g3d); stroke: #818cf8; }
+      .c3 .center,.c3 .splat { fill: #818cf8; }
+      .c3 .ray    { stroke: #818cf8; }
+    }
+  </style>
+
+  <defs>
+    <radialGradient id="g1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0e9488" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#0e9488" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7c6fe0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#7c6fe0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g1d" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2d" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3d" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <text x="30" y="42" class="label muted">3D Gaussians (world space)</text>
+  <text x="500" y="42" class="label muted">image plane</text>
+  <text x="30" y="450" class="label-sm muted">each projected splat is the Gaussian's mean and covariance run through K[R|t], then linearized about the mean</text>
+
+  <line x1="560" y1="70" x2="560" y2="400" class="plane"/>
+  <line x1="548" y1="70" x2="572" y2="70" class="plane"/>
+  <line x1="548" y1="400" x2="572" y2="400" class="plane"/>
+
+  <!-- G1 -->
+  <g class="c1">
+    <ellipse cx="140" cy="140" rx="55" ry="34" transform="rotate(-15 140 140)" class="blob"/>
+    <circle cx="140" cy="140" r="3" class="center"/>
+    <line x1="140" y1="140" x2="760" y2="240" class="ray"/>
+    <ellipse cx="560" cy="208" rx="13" ry="7" transform="rotate(-8 560 208)" class="splat"/>
+  </g>
+
+  <!-- G2 -->
+  <g class="c2">
+    <ellipse cx="230" cy="260" rx="42" ry="42" class="blob"/>
+    <circle cx="230" cy="260" r="3" class="center"/>
+    <line x1="230" y1="260" x2="760" y2="240" class="ray"/>
+    <ellipse cx="560" cy="248" rx="12" ry="9" transform="rotate(3 560 248)" class="splat"/>
+  </g>
+
+  <!-- G3 -->
+  <g class="c3">
+    <ellipse cx="150" cy="380" rx="30" ry="48" transform="rotate(25 150 380)" class="blob"/>
+    <circle cx="150" cy="380" r="3" class="center"/>
+    <line x1="150" y1="380" x2="760" y2="240" class="ray"/>
+    <ellipse cx="560" cy="286" rx="11" ry="6" transform="rotate(11 560 286)" class="splat"/>
+  </g>
+
+  <circle cx="760" cy="240" r="4" class="pinhole"/>
+  <text x="700" y="270" class="label-sm muted">camera center</text>
+</svg>

@@ -1,0 +1,37 @@
+title: Daniel Kim
+description: >-
+  Notes on things I'm learning — robotics, machine learning, and hardware.
+url: "https://daniel360kim.github.io"
+baseurl: ""
+author: Daniel Kim
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  posts_limit: 20
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:year/:month/:day/:title/
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - BLOG_GUIDE.md
+  - vendor
+  - preview.sh

@@ -1,0 +1,28 @@
+---
+layout: default
+title: Blog
+description: Notes on things I'm learning — robotics, machine learning, and hardware.
+permalink: /blog.html
+---
+<div class="full-width-content">
+
+    <div class="header-intro">
+        <h1><span class="text-gradient">Notes</span></h1>
+        <p>Write-ups on things I'm learning along the way.</p>
+    </div>
+
+    <ul class="post-list">
+        {% for post in site.posts %}
+        <li class="post-list-item">
+            <a href="{{ post.url | relative_url }}" class="post-list-link">
+                <span class="post-list-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+                <span class="post-list-title">{{ post.title }}</span>
+            </a>
+            {% if post.excerpt %}<p class="post-list-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>{% endif %}
+        </li>
+        {% else %}
+        <li class="post-list-empty">No posts yet — check back soon.</li>
+        {% endfor %}
+    </ul>
+
+</div>

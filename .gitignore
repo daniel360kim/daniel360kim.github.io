@@ -6,3 +6,17 @@ assets/cmu/2026-RISS-paper-KIM-Daniel-WANG.pdf
 assets/cmu/Poster_print.pdf
 
 Untitled
+
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
+# Private: repo is public, these must never be pushed
+_drafts/
+.claude/
+BLOG_GUIDE.md
+.DS_Store
+preview.sh
